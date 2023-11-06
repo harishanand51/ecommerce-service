@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,6 +16,8 @@ export class HomepageComponent {
   searchForm = new FormGroup({
     searchInput: new FormControl(''),
   });
+  constructor(private router: Router) {}
+
   search(){
     const searchTerm = this.searchForm.controls.searchInput.value
     // You can perform your search logic here, e.g., make an API request or filter data.
@@ -23,7 +26,9 @@ export class HomepageComponent {
   addtoCart(){
 
   }
-  product_details(){}
+  product_details(){
+    this.router.navigate(['/details']);
+  }
   getVisibleCards() {
     const startIndex = (this.page - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;
