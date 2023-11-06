@@ -1,1 +1,69 @@
-<p>homepage works!</p>
+<div>
+<p>
+    <mat-toolbar color="primary">
+      
+      <span>Ecommerce App</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>add_shopping_cart</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </mat-toolbar>
+  </p>
+</div>
+<div class="search-bar">
+  <form [formGroup]="searchForm">
+    <mat-form-field class="search-input" class="wide-input">
+      <input matInput formControlName="searchInput" placeholder="Enter your search term" (keyup.enter)="search()" 
+      />
+      <button mat-button matPrefix (click)="search()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+  </form>
+</div>
+
+<div class="search-bar">
+  <mat-chip-listbox aria-label="Category selection">
+    <mat-chip-option color="primary" class="chip_option">Category1</mat-chip-option>
+    <mat-chip-option color="primary" class="chip_option">Category2</mat-chip-option>
+    <mat-chip-option color="primary" class="chip_option">Category3</mat-chip-option>
+    <mat-chip-option color="primary" class="chip_option">Category4</mat-chip-option>
+  </mat-chip-listbox>
+</div>
+<div>
+
+
+  <div class="card_align">
+    <div *ngFor="let cardData of getVisibleCards()" >
+      <mat-card class="example-card">
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="addtoCart()">Add to cart</button>
+          <button mat-button (click)="product_details()">Details</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  
+  <mat-paginator [length]="cardDataList.length"
+  [pageSize]="pageSize"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  (page)="onPageChange($event)"
+  aria-label="Select page">
+</mat-paginator>
+
+
+  

@@ -1,0 +1,57 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-input {
+    flex: 1;
+    margin-right: 16px;
+    /* Adjust the margin as needed */
+}
+
+button.mat-button {
+    background-color: #1976D2;
+    /* Button background color */
+    color: white;
+    /* Button text color */
+    border: none;
+}
+
+mat-icon {
+    font-size: 24px;
+    /* Adjust the icon size */
+    margin-right: 8px;
+    /* Adjust the margin as needed */
+}
+
+.example-card {
+    max-width: 400px;
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+.card_align {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* Adjust alignment as needed */
+    gap: 20px;
+    /* Adjust spacing between cards as needed */
+
+
+}
+.wide-input{
+    width: 500px ;
+}
+.chip_option{
+    width:150px;
+}
