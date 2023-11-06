@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeModule } from 'src/home/home.module';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { RegistrationModule } from 'src/login/registration/registration.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
     AppRoutingModule,
     BrowserAnimationsModule,
     HomeModule,
-    AppRoutingModule,
+    RegistrationModule
   ],
   providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy },],
   bootstrap: [AppComponent]
