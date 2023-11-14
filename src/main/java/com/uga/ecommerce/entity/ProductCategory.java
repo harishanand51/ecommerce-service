@@ -16,7 +16,7 @@ public class ProductCategory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//@Column(name="product_category_id")
-	private Long Id;
+	private Long id;
 	
 	@OneToOne
 	@JoinColumn(name="product_id")
@@ -27,11 +27,11 @@ public class ProductCategory {
 	private Category category;
 
 	public Long getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public Product getProduct() {
@@ -52,7 +52,7 @@ public class ProductCategory {
 
 	@Override
 	public String toString() {
-		return "ProductCategory [Id=" + Id + ", product=" + product + ", category=" + category + "]";
+		return "ProductCategory [Id=" + id + ", product=" + product + ", category=" + category + "]";
 	}
 
 	

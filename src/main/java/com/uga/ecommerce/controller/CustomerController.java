@@ -108,7 +108,7 @@ public class CustomerController {
 		
 		Customer customer = customerService.editProfileDetails(principal, reqCustomer);
 		
-		return new ResponseEntity<>(principal, HttpStatus.OK);
+		return new ResponseEntity<>(customer, HttpStatus.OK);
 	}
 	
 

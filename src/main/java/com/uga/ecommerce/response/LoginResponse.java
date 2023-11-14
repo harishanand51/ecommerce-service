@@ -1,22 +1,26 @@
 package com.uga.ecommerce.response;
 
+import com.uga.ecommerce.entity.CustomerType;
+
 public class LoginResponse {
 	
 	private String token;
+	private CustomerType customerType;
 	private String errMsg;
 
-	public LoginResponse(String token, String errMsg) {
-		this.token = token;
-		this.errMsg = errMsg;
-	}
 
 	public LoginResponse(LoginResponseBuilder responseBuilder) {
 		this.token = responseBuilder.token;
+		this.customerType = responseBuilder.customerType;
 		this.errMsg = responseBuilder.errMsg;
 	}
 
 	public String getToken() {
 		return token;
+	}
+	
+	public CustomerType getCustomerType() {
+		return customerType;
 	}
 
 	public String getErrMsg() {
@@ -26,10 +30,16 @@ public class LoginResponse {
 	public static class LoginResponseBuilder {
 
 		private String token;
+		private CustomerType customerType;
 		private String errMsg;
 
 		public LoginResponseBuilder setToken(String token) {
 			this.token = token;
+			return this;
+		}
+		
+		public LoginResponseBuilder setCustomerType(CustomerType customerType) {
+			this.customerType = customerType;
 			return this;
 		}
 
@@ -38,6 +48,8 @@ public class LoginResponse {
 			this.errMsg = errMsg;
 			return this;
 		}
+		
+		
 
 		public LoginResponse build() {
 			return new LoginResponse(this);

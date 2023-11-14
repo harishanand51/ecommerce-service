@@ -2,6 +2,8 @@ package com.uga.ecommerce.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,7 +16,7 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//@Column(name="product_id")
-	private Long Id;
+	private Long id;
 	
 	@Column(name="product_name")
 	private String productName;
@@ -27,13 +29,26 @@ public class Product {
 	
 	@Column(name="stock_quantity")
 	private String stockQuantity;
+	
+	/*@Enumerated(EnumType.STRING)
+	@Column(name="category")
+	private Category category;
 
-	public long getId() {
-		return Id;
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setId(long id) {
-		Id = id;
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	*/
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getProductName() {
@@ -70,9 +85,18 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [Id=" + Id + ", productName=" + productName + ", description=" + description + ", price="
+		return "Product [id=" + id + ", productName=" + productName + ", description=" + description + ", price="
 				+ price + ", stockQuantity=" + stockQuantity + "]";
 	}
+	
+	
+
+	/*@Override
+	public String toString() {
+		return "Product [id=" + id + ", productName=" + productName + ", description=" + description + ", price="
+				+ price + ", stockQuantity=" + stockQuantity + ", category=" + category + "]";
+	}*/
+
 	
 	
 	
