@@ -25,10 +25,10 @@ public class Product {
 	private String description;
 	
 	@Column(name="price")
-	private String price;
+	private Float price;
 	
 	@Column(name="stock_quantity")
-	private String stockQuantity;
+	private Integer stockQuantity;
 	
 	/*@Enumerated(EnumType.STRING)
 	@Column(name="category")
@@ -67,19 +67,19 @@ public class Product {
 		this.description = description;
 	}
 
-	public String getPrice() {
+	public Float getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
 
-	public String getStockQuantity() {
+	public Integer getStockQuantity() {
 		return stockQuantity;
 	}
 
-	public void setStockQuantity(String stockQuantity) {
+	public void setStockQuantity(Integer stockQuantity) {
 		this.stockQuantity = stockQuantity;
 	}
 
