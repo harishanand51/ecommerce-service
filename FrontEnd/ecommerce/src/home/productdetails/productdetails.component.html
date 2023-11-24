@@ -1,0 +1,26 @@
+<div class="product_details">
+    <a mat-button (click)="navigate($event)" class="back-button">Back</a>
+<mat-card class="card">
+    <div class="image-container">
+      <img mat-card-image [src]="CardData.image" alt="Shiba Inu Image">
+    </div>
+    <div class="details">
+        <div class="rating-stars" (click)="showrating()">
+            <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+              <mat-icon class="star-icon" [ngClass]="{'filled': star <= CardData.rating}">star</mat-icon>
+            </ng-container>
+          </div>
+    
+      <p><span class="highlight">Name:</span> Shiba Inu</p>
+      <p><span class="highlight">Description:</span> {{ CardData.desc }}</p>
+      <p><span class="highlight">Price:</span> {{ CardData.price }}</p>
+      <p><span class="highlight">Rating:</span> {{ CardData.rating }}</p>
+      <p><span class="highlight">Product ID:</span> {{ CardData.productid }}</p>
+      
+    </div>
+  </mat-card>
+  
+</div>
+<div *ngIf="showReviewSection" class="reviews-section">
+    <app-review *ngFor="let review of reviews" [review]="review"></app-review>
+  </div>

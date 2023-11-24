@@ -11,9 +11,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator'; // Add MatPaginatorModule here
 
 import { HomepageComponent } from './homepage/homepage.component';
+import { ProductdetailsComponent } from './productdetails/productdetails.component';
+import { ReviewComponent } from './review/review.component';
 
 @NgModule({
-  declarations: [HomepageComponent], // Declare HomepageComponent
+  declarations: [HomepageComponent, ProductdetailsComponent, ReviewComponent], // Declare HomepageComponent
   imports: [
     CommonModule,
     MatIconModule,

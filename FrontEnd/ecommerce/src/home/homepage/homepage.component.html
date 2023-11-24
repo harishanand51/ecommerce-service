@@ -1,3 +1,4 @@
+<div *ngIf="!showProductDetails">
 <div>
 <p>
     <mat-toolbar color="primary">
@@ -52,7 +53,8 @@
         </mat-card-content>
         <mat-card-actions>
           <button mat-button (click)="addtoCart()">Add to cart</button>
-          <button mat-button (click)="product_details()">Details</button>
+          <button mat-button (click)="product_details(cardData, $event)">Details</button>
+
         </mat-card-actions>
       </mat-card>
     </div>
@@ -64,6 +66,7 @@
   (page)="onPageChange($event)"
   aria-label="Select page">
 </mat-paginator>
-
-
-  
+</div>
+</div>
+<!-- In the HomepageComponent template -->
+<app-productdetails *ngIf="showProductDetails" [CardData]="Card_Data" (isBack)="goBack($event)"></app-productdetails>

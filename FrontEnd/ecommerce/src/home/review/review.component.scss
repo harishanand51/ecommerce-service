@@ -1,0 +1,25 @@
+.review-container {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  h3 {
+    color: #333;
+  }
+  .rating-stars {
+    
+    top: 10px;
+    right: 10px;
+    display: flex;
+  }
+  
+  .star-icon {
+    font-size: 1.5em;
+    color: #CCCCCC; /* Set the color of the stars, you can change it as needed */
+  }
+  
+  .star-icon.filled {
+    color: #FFD700; /* Set the color of the filled stars, you can change it as needed */
+  }

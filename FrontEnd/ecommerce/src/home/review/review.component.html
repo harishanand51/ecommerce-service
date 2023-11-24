@@ -1,0 +1,11 @@
+<!-- review.component.html -->
+<div *ngIf="review" class="review-container">
+    <h3>{{ review.username }}</h3>
+    <div class="rating-stars">
+        <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+            <mat-icon class="star-icon" [ngClass]="{'filled': star <= review.rating}">star</mat-icon>
+        </ng-container>
+    </div>
+    <p><span class="highlight">Rating:</span> {{ review.rating }}</p>
+    <p><span class="highlight">Comment:</span> {{ review.comment }}</p>
+</div>
