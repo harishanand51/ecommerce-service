@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { ProductdetailsComponent } from '../productdetails/productdetails.component';
+import { HomeserviceService } from '../Services/homeservice.service';
 
 @Component({
   selector: 'app-homepage',
@@ -28,7 +29,7 @@ export class HomepageComponent {
  
   showProductDetails: boolean=false;
   Card_Data: any;
-  constructor(private router: Router) {}
+  constructor(private router: Router,public homeservice:HomeserviceService) {}
 
   search(){
     const searchTerm = this.searchForm.controls.searchInput.value
@@ -58,6 +59,10 @@ export class HomepageComponent {
     if(event){
       this.showProductDetails=false;
     }
+  }
+  login(){
+    this.homeservice.isUser_Login=true;
+    this.router.navigateByUrl("/login");
   }
 }
 

@@ -54,4 +54,7 @@ export class LoginpageComponent implements OnInit {
   forgot_password() {
     // Handle forgot password logic here
   }
+  Register(){
+    this._router.navigateByUrl("/register");
+  }
 }

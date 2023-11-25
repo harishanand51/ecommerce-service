@@ -5,8 +5,12 @@
       
       <span>Ecommerce App</span>
       <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with heart icon">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with heart icon" *ngIf="homeservice.isUser_Login">
         <mat-icon>account_circle</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with heart icon" *ngIf="!homeservice.isUser_Login"
+      (click)="login()">
+        <mat-icon>login</mat-icon>
       </button>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with heart icon">
         <mat-icon>add_shopping_cart</mat-icon>
