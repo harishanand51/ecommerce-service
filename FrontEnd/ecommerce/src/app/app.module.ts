@@ -8,9 +8,12 @@ import { HomeModule } from 'src/home/home.module';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { RegistrationModule } from 'src/login/registration/registration.module';
 
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    
   ],
   imports: [
     BrowserModule,
