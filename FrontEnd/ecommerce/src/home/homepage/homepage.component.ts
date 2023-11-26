@@ -35,6 +35,10 @@ export class HomepageComponent {
     this.http.get(url1).subscribe((res:any)=>{
       this.categories=res;
     },err=>{});
+    let url2="http://localhost:8082/dummyapi"
+    this.http.get(url1).subscribe((res:any)=>{
+      this.homeservice.cartId=res;
+    },err=>{});
   }
   search(){
     const searchTerm = this.searchForm.controls.searchInput.value
