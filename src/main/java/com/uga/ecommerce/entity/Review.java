@@ -23,18 +23,37 @@ public class Review {
 	//@Column(name="review_id")
 	private Long Id;
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+//	@ManyToOne
+    
+
+//    @ManyToOne
+    
+	
+////	@Id
+////	@GeneratedValue(strategy = GenerationType.IDENTITY)
+////	//@Column(name="review_id")
+////	private Long Id;
+//	
+	//@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne
 	@JoinColumn(name="product_id", nullable = false)
-	@JsonIgnore
+	//@JsonIgnore
 	private Product product;
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+//	private Long productId;
+	
+	//@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne
 	@JoinColumn(name="customer_id",  nullable=false)
-	@JsonIgnore
+	//@JsonIgnore
 	private Customer customer;
 	
+//	private Long customerId;
+	
+    
+    
 	@Column(name="rating")
-	private int rating;
+	private Integer rating;
 	
 	@Column(name="comment")
 	private String comment;
@@ -50,27 +69,43 @@ public class Review {
 		Id = id;
 	}
 
+//	public Long getProductId() {
+//		return productId;
+//	}
+	
 	public Product getProduct() {
 		return product;
 	}
 
+//	public void setProductId(Long productId) {
+//		this.productId = productId;
+//	}
+	
 	public void setProduct(Product product) {
 		this.product = product;
 	}
 
+//	public Long getCustomerId() {
+//		return customerId;
+//	}
+//	
 	public Customer getCustomer() {
 		return customer;
 	}
 
+//	public void setCustomer(Long customerId) {
+//		this.customerId = customerId;
+//	}
+	
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
 
-	public int getRating() {
+	public Integer getRating() {
 		return rating;
 	}
 
-	public void setRating(int rating) {
+	public void setRating(Integer rating) {
 		this.rating = rating;
 	}
 
@@ -92,8 +127,13 @@ public class Review {
 
 	@Override
 	public String toString() {
-		return "Review [Id=" + Id + ", product=" + product + ", customer=" + customer + ", rating=" + rating
+		return "Review [Id=" + Id + ", product=" + product.getId() + ", customer=" + customer.getId() + ", rating=" + rating
 				+ ", comment=" + comment + ", reviewDate=" + reviewDate + "]";
+	}
+
+	public Object getYourBooleanField() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
