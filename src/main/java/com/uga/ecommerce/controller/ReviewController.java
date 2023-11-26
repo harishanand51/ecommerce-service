@@ -2,6 +2,7 @@ package com.uga.ecommerce.controller;
 
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -10,7 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -60,16 +62,16 @@ public class ReviewController {
 		Product product = productService.getProductById(review.getProduct().getId());
 		Long productId = product.getId();
 		
-		Optional<Customer> customerData = customerService.getCustomerByEmail(review.getCustomer().getEmail());
-		Customer customer = customerData.get();
-		Long customerId = customer.getId();
-		
-		logger.info("commment"+customerId);
+//		Optional<Customer> customerData = customerService.getCustomerByEmail(review.getCustomer().getEmail());
+//		Customer customer = customerData.get();
+//		Long customerId = customer.getId();
+//		
+//		logger.info("commment"+customerId);
 		
 //		review.setProductId(productId);
 //		review.setCustomerId(customerId);
 //		if(!reviewService.getReview(customerId, review.getComment()).isEmpty())
-		Review existingReview = reviewService.getReview(customerId, review.getComment());
+		Review existingReview = reviewService.getReview(review.getComment());
 		
 		logger.info("is there or not "+ existingReview);
 		
@@ -112,5 +114,18 @@ public class ReviewController {
 		return new ResponseEntity<>(review, HttpStatus.NOT_MODIFIED);
 		
 	}
+	
+	
+	@GetMapping("/getReviews/{productId}")
+    public ResponseEntity<List<Review>> getReviewsByProductId(@PathVariable Long productId) {
+		List<Review> reviews=reviewService.getReviewByProductId(productId);
+       
+
+        if (reviews.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(reviews, HttpStatus.OK);
+        }
+    }
 	
 }

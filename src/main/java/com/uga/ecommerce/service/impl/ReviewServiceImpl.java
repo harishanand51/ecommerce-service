@@ -38,27 +38,14 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public Review addReviews(Review review){
 		
-//		Product product = productRepo.findByProductName(productName);
-//        Customer customer = customerRepo.findByEmail(customerEmail);
-//        
-//        if (product != null && customer != null) {
-//            Review review = new Review();
-//            review.setProduct(product);
-//            review.setCustomer(customer);
-//            review.setRating(rating);
-//            review.setComment(comment);
-//
-//            return reviewRepo.save(review);
-//        }
-
 		Review rw = reviewRepo.save(review);
 		
 		return rw;
 	}
 
 	@Override
-    public Review getReview(Long customerId, String comment) {
-        return reviewRepo.findByCustomerIdAndComment(customerId, comment);
+    public Review getReview(String comment) {
+        return reviewRepo.findByComment(comment);
     }
 	
 	public Review updateReviews(Review review){
@@ -88,12 +75,21 @@ public class ReviewServiceImpl implements ReviewService {
         // You can handle the case where the review is not found, e.g., throw an exception or return null
         return review.orElse(null);
     }
+
+	@Override
+	public List<Review> getReviewByProductId(Long productId) {
+		// TODO Auto-generated method stub
+		return reviewRepo.findByProductId(productId);
+	}
 	
 	
-	private Review detachReview(Review review) {
-        entityManager.detach(review);
-        return review;
-    }
+	
+	
+	
+//	private Review detachReview(Review review) {
+//        entityManager.detach(review);
+//        return review;
+//    }
 
 	 
 	// @Autowired

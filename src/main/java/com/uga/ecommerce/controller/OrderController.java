@@ -15,26 +15,52 @@ import com.uga.ecommerce.service.OrderService;
 
 //@RestController
 public class OrderController {
+//	
+//	@Autowired
+//	OrderService orderService;
+//	
+//	@PostMapping("/addProductToCart/{productId}")
+//	public ResponseEntity<?> addItemsToOrder(@PathVariable Long productId, UsernamePasswordAuthenticationToken authObj) {
+//		
+//		//mind the quantity
+//		
+//		Customer customer= (Customer) authObj.getPrincipal();
+//		Long customerId = customer.getId();
+//		//order.setCustomer((Customer) authObj.getPrincipal());
+//		
+//		
+//		orderService.addProductToCart(productId, customerId);
+//		
+//		
+//		
+//		return new ResponseEntity<Product>(HttpStatus.OK);
+//		
+//	}
+//	
+//	@PostMapping("/cartTotal")
+//	public ResponseEntity<?> cartTotal(@PathVariable Long , UsernamePasswordAuthenticationToken authObj) {
+//		
+//		// Mind the quantity
+//		Customer customer = (Customer) authObj.getPrincipal();
+//		Long customerId = customer.getId();
+//		
+//		// Add product to cart
+//		orderService.addProductToCart(productId, customerId);
+//		
+//		// Assuming you have a method to get cart details from the cart table
+//		CartDetails cartDetails = orderService.getCartDetails();
+//		
+//		// Assuming you have a method to convert cart details to an order
+//		Order order = convertCartToOrder(cartDetails, customer);
+//		
+//		// Assuming you have a method to save the order to the order table
+//		orderService.saveOrder(order);
+//		
+//		return new ResponseEntity<Product>(HttpStatus.OK);
+//	}
+//	
 	
-	@Autowired
-	OrderService orderService;
 	
-	@PostMapping("/addProductToCart/{productId}")
-	public ResponseEntity<?> addItemsToOrder(@PathVariable Long productId, UsernamePasswordAuthenticationToken authObj) {
-		
-		//mind the quantity
-		
-		Customer customer= (Customer) authObj.getPrincipal();
-		Long customerId = customer.getId();
-		//order.setCustomer((Customer) authObj.getPrincipal());
-		
-		
-		orderService.addProductToCart(productId, customerId);
-		
-		
-		
-		return new ResponseEntity<Product>(HttpStatus.OK);
-		
-	}
+	// cancel order
 
 }

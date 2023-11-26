@@ -43,10 +43,10 @@ public class Review {
 //	private Long productId;
 	
 	//@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@ManyToOne
-	@JoinColumn(name="customer_id",  nullable=false)
+	//@ManyToOne
+	//@JoinColumn(name="customer_id",  nullable=false)
 	//@JsonIgnore
-	private Customer customer;
+	//private Customer customer;
 	
 //	private Long customerId;
 	
@@ -89,17 +89,17 @@ public class Review {
 //		return customerId;
 //	}
 //	
-	public Customer getCustomer() {
-		return customer;
-	}
+//	public Customer getCustomer() {
+//		return customer;
+//	}
 
 //	public void setCustomer(Long customerId) {
 //		this.customerId = customerId;
 //	}
 	
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+//	public void setCustomer(Customer customer) {
+//		this.customer = customer;
+//	}
 
 	public Integer getRating() {
 		return rating;
@@ -125,9 +125,15 @@ public class Review {
 		this.reviewDate = reviewDate;
 	}
 
+//	@Override
+//	public String toString() {
+//		return "Review [Id=" + Id + ", product=" + product.getId() + ", customer=" + customer.getId() + ", rating=" + rating
+//				+ ", comment=" + comment + ", reviewDate=" + reviewDate + "]";
+//	}
+	
 	@Override
 	public String toString() {
-		return "Review [Id=" + Id + ", product=" + product.getId() + ", customer=" + customer.getId() + ", rating=" + rating
+		return "Review [Id=" + Id + ", product=" + product.getId() + ", rating=" + rating
 				+ ", comment=" + comment + ", reviewDate=" + reviewDate + "]";
 	}
 
