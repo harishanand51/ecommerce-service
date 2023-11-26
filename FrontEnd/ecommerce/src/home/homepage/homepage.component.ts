@@ -39,7 +39,9 @@ export class HomepageComponent {
   addtoCart(){
 
   }
-  
+  NavigateCart(){
+    this.router.navigateByUrl('/cart');
+  }
   product_details(cardData: any, event: Event) {
     this.showProductDetails=true;
     this.Card_Data=cardData;

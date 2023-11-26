@@ -12,7 +12,8 @@
       (click)="login()">
         <mat-icon>login</mat-icon>
       </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with heart icon">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with heart icon" (click)="NavigateCart()"
+      matTooltip="Add to Cart" [matBadge]="homeservice.total_items" matBadgeColor="accent">
         <mat-icon>add_shopping_cart</mat-icon>
       </button>
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
