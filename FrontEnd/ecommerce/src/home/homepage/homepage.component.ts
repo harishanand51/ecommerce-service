@@ -4,6 +4,7 @@ import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { ProductdetailsComponent } from '../productdetails/productdetails.component';
 import { HomeserviceService } from '../Services/homeservice.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-homepage',
@@ -11,14 +12,7 @@ import { HomeserviceService } from '../Services/homeservice.service';
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent {
-  cardDataList=[
-    {"image":"https://material.angular.io/assets/img/examples/shiba2.jpg",
-    "desc":"The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originallybred for hunting.",
-    "price":"10$",
-    "rating":"4",
-    "productid":"201"
-  },
-    {},{},{},{},{},{},{},{},{},{},{},{},{},{}];
+  cardDataList:any=[];
   page:number = 1; // Initial page
   pageSize = 5; // Initial page size
   searchForm = new FormGroup({
@@ -29,10 +23,26 @@ export class HomepageComponent {
  
   showProductDetails: boolean=false;
   Card_Data: any;
-  constructor(private router: Router,public homeservice:HomeserviceService) {}
-
+  categories: any;
+  constructor(private router: Router,public homeservice:HomeserviceService,private http:HttpClient) {}
+  ngOnInit(){
+    let url="http://localhost:8082/Allproducts"
+    this.http.get(url).subscribe((res:any)=>{
+      this.cardDataList=res;
+      this.homeservice.results=this.cardDataList;
+    },err=>{});
+    let url1="http://localhost:8082/getCategories"
+    this.http.get(url1).subscribe((res:any)=>{
+      this.categories=res;
+    },err=>{});
+  }
   search(){
     const searchTerm = this.searchForm.controls.searchInput.value
+    let url="http://localhost:8082/product/"+searchTerm;
+    this.http.get(url).subscribe((res:any)=>{
+      this.cardDataList=res;
+      this.homeservice.results=this.cardDataList;
+    },err=>{});
     // You can perform your search logic here, e.g., make an API request or filter data.
     console.log('Search term:', searchTerm);
   }
@@ -65,6 +75,17 @@ export class HomepageComponent {
   login(){
     this.homeservice.isUser_Login=true;
     this.router.navigateByUrl("/login");
+  }
+  select_category(cat:any){
+    let url="http://localhost:8082/getAllProductsinCategory";
+    let req={
+      "id": cat.id,
+      "categoryName": cat.categoryName
+  }
+  this.http.post(url,req).subscribe((res)=>{
+    this.cardDataList=res;
+      this.homeservice.results=this.cardDataList;
+  })
   }
 }
 

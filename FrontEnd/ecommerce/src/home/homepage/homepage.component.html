@@ -35,11 +35,14 @@
 </div>
 
 <div class="search-bar">
-  <mat-chip-listbox aria-label="Category selection">
-    <mat-chip-option color="primary" class="chip_option">Category1</mat-chip-option>
-    <mat-chip-option color="primary" class="chip_option">Category2</mat-chip-option>
-    <mat-chip-option color="primary" class="chip_option">Category3</mat-chip-option>
-    <mat-chip-option color="primary" class="chip_option">Category4</mat-chip-option>
+  <mat-chip-listbox [multiple]="false" aria-label="Category selection" *ngFor="let cat of categories">
+    <mat-chip-option
+    color="primary"
+    class="chip_option"
+    
+    (click)="select_category(cat)"
+  >
+      {{cat.categoryName}}</mat-chip-option>
   </mat-chip-listbox>
 </div>
 <div>
@@ -51,9 +54,13 @@
         <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
         <mat-card-content>
           <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
+            {{cardData.productName}}
+          </p>
+          <p>
+            {{cardData.description}}
+          </p>
+          <p>
+            ${{cardData.price}}
           </p>
         </mat-card-content>
         <mat-card-actions>
