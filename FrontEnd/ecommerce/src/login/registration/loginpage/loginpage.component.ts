@@ -1,8 +1,10 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { HomeserviceService } from 'src/home/Services/homeservice.service';
 
 @Component({
   selector: 'app-loginpage',
@@ -20,7 +22,10 @@ export class LoginpageComponent implements OnInit {
     private _router: Router,
     public dialog: MatDialog,
     private _snackBar: MatSnackBar,
-    private fb: FormBuilder // Inject FormBuilder
+    private fb: FormBuilder,
+    private http:HttpClient,
+    private homeservice:HomeserviceService
+    // Inject FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -43,12 +48,25 @@ export class LoginpageComponent implements OnInit {
     // Here you can add your login logic using this.loginFormGroup.value
     const username = this.loginFormGroup.value.UsernameCtrl;
     const password = this.loginFormGroup.value.PasswordCtrl;
-
-    if (username === 'your_username' && password === 'your_password') {
+    const credentials = btoa(`${username}:${password}`);
+    let url="http://localhost:8082/login";
+    const headers=new HttpHeaders({
+      'Authorization': `Basic ${credentials}`
+    })
+    this.http.get(url,{headers:headers}).subscribe((res:any)=>{
+      if(res.statusCode===200){
+      this.homeservice.token=res.token;
       alert('Login successful!');
-    } else {
-      alert('Invalid username or password. Please try again.');
+      this._router.navigateByUrl("/home");
     }
+    },err=>{
+      alert('Invalid username or password. Please try again.');
+    });
+    // if (username === 'your_username' && password === 'your_password') {
+      
+    // } else {
+      
+    // }
   }
 
   forgot_password() {

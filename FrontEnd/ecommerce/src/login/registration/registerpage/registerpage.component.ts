@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 interface State {
   value: string;
   viewValue: string;
@@ -162,12 +164,27 @@ export class RegisterpageComponent {
 
   isLinear = true;
 
-  constructor(
-     ) { }
+  constructor(private http:HttpClient,private router:Router) { }
   ngOnInit(): void {
 
   }
   signup() {
-   
+    let url="http://localhost:8082/signup";
+   let req={
+    "firstName": this.firstFormGroup.controls.firstNameCtrl.value,
+    "lastName": this.firstFormGroup.controls.lastNameCtrl.value,
+    "email":this.firstFormGroup.controls.emailCtrl.value,
+    "password": this.firstFormGroup.controls.passwordCtrl.value,
+    "phone":"9999",
+    "address": "def street"
+  }
+  this.http.post(url,req).subscribe((res:any)=>{
+    if(res.statusCode === 201 && res=="Customer Created"){
+      this.router.navigateByUrl("/home");
+    }
+  },err=>{
+    this.firstFormGroup.reset();
+  })
+
 }
 }
