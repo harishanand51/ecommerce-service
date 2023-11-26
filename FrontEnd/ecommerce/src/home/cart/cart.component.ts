@@ -55,7 +55,7 @@ export class CartComponent {
     }  
   }
   checkout(){
-    //this._router.navigate(['home/checkOut']);
+    this._router.navigateByUrl('/payment');
     this.cart.disable_checkout_btn=true;
   }
   Backtoresults(){

@@ -18,10 +18,13 @@ import { ProductdetailsComponent } from './productdetails/productdetails.compone
 import { ReviewComponent } from './review/review.component';
 import { CartComponent } from './cart/cart.component';
 import {MatBadgeModule} from '@angular/material/badge';
+import { PaymentComponent } from './payment/payment.component';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [HomepageComponent, ProductdetailsComponent, ReviewComponent
   ,CartComponent,
-  PaymentDetailsComponent,], // Declare HomepageComponent
+  PaymentDetailsComponent,
+  PaymentComponent,], // Declare HomepageComponent
   imports: [
     CommonModule,
     MatIconModule,
@@ -34,7 +37,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatChipsModule,
     MatCardModule,
     MatPaginatorModule, // Include MatPaginatorModule in the imports array
-    MatBadgeModule
+    MatBadgeModule,
+    MatSelectModule
   ],
   
  
