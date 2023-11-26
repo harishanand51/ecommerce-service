@@ -11,8 +11,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="order_detail")
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+//@Entity
+//@Table(name="order_detail")
 public class OrderDetail {
 	
 	@Id
@@ -24,8 +26,8 @@ public class OrderDetail {
 	@JoinColumn(name="order_id")
 	private Order order;
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-	@JoinColumn(name="product_id", nullable = false)
+	@OneToOne
+	@JoinColumn(name="product_id")
 	private Product product;
 	
 	@Column(name="quantity")
