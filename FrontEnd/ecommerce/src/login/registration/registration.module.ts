@@ -14,6 +14,9 @@ import { RegisterpageComponent } from './registerpage/registerpage.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatSelectModule} from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+
+
 
 
 @NgModule({
@@ -33,7 +36,12 @@ import { MatIconModule } from '@angular/material/icon';
     MatStepperModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    ReactiveFormsModule
+  
   ],
   exports:[
     LoginpageComponent,
