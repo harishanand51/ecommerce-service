@@ -60,16 +60,16 @@ public class ReviewController {
 		Product product = productService.getProductById(review.getProduct().getId());
 		Long productId = product.getId();
 		
-		Optional<Customer> customerData = customerService.getCustomerByEmail(review.getCustomer().getEmail());
-		Customer customer = customerData.get();
-		Long customerId = customer.getId();
+		//Optional<Customer> customerData = customerService.getCustomerByEmail(review.getCustomer().getEmail());
+		//Customer customer = customerData.get();
+		//Long customerId = customer.getId();
 		
-		logger.info("commment"+customerId);
+		//logger.info("commment"+customerId);
 		
 //		review.setProductId(productId);
 //		review.setCustomerId(customerId);
 //		if(!reviewService.getReview(customerId, review.getComment()).isEmpty())
-		Review existingReview = reviewService.getReview(customerId, review.getComment());
+		Review existingReview = reviewService.getReview(review.getComment());
 		
 		logger.info("is there or not "+ existingReview);
 		

@@ -56,9 +56,8 @@ public class ReviewServiceImpl implements ReviewService {
 		return rw;
 	}
 
-	@Override
-    public Review getReview(Long customerId, String comment) {
-        return reviewRepo.findByCustomerIdAndComment(customerId, comment);
+	public Review getReview(String comment) {
+        return reviewRepo.findByComment(comment);
     }
 	
 	public Review updateReviews(Review review){

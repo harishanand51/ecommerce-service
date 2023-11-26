@@ -10,7 +10,7 @@ public interface ReviewService {
 
 	public Review addReviews(Review review);
 	
-	public Review getReview(Long customerId, String comment);
+	public Review getReview( String comment);
 	
 	public Review updateReviews(Review review);
 }

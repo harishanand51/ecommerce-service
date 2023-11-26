@@ -21,15 +21,19 @@ public class CartController {
 	@PostMapping("/addProductToCart")
 	public ResponseEntity<?> addProductToCart(@RequestBody ProductCart productCart ){
 		
-		Long cartId = productCart.getId().getCart().getId();
-        Long productId = productCart.getId().getProduct().getId();
-        Integer quantity = productCart.getQuantity();
+//		Long cartId = productCart.getId().getCart().getId();
+//        Long productId = productCart.getId().getProduct().getId();
+//        Integer quantity = productCart.getQuantity();
 		
-		//Long cartId = productCart.getCart().getId();
-		//Long productId = productCart.getProduct().getId();
-		//Integer quantity = productCart.getQuantity();
+		Long cartId = productCart.getCart().getId();
+		Long productId = productCart.getProduct().getId();
+		Integer quantity = productCart.getQuantity();
 		
 		String response = cartService.addProductToCart(cartId,productId,quantity);
+		
+		if(response.matches("Product added to the cart successfully")) {
+			return new ResponseEntity<>(quantity, HttpStatus.OK);
+		}
 		
 		
 		return new ResponseEntity<>(response, HttpStatus.OK);
@@ -38,15 +42,27 @@ public class CartController {
 	@PostMapping("/removeProductFromCart")
 	public ResponseEntity<?> removeProductFromCart(@RequestBody ProductCart productCart){
 		
-		Long cartId = productCart.getId().getCart().getId();
-        Long productId = productCart.getId().getProduct().getId();
-		//Long cartId = productCart.getCart().getId();
-		//Long productId = productCart.getProduct().getId();
+//		Long cartId = productCart.getId().getCart().getId();
+//        Long productId = productCart.getId().getProduct().getId();
+		Long cartId = productCart.getCart().getId();
+		Long productId = productCart.getProduct().getId();
 		String response = cartService.removeProductFromCart(cartId, productId);
 		
 		
 		return new ResponseEntity<>(response, HttpStatus.OK);
 		
+	}
+	
+	@GetMapping("/dummyapi")
+	public ResponseEntity<?> dummyapi(){
+		
+		//Integer randomDouble = (int) Math.random();
+		
+		Integer min = 0;
+        Integer max = 50;
+        Integer randomCartId = (int) (Math.random() * (max - min) + min);
+		
+		return new ResponseEntity<>(randomCartId, HttpStatus.OK);
 	}
 	
 	

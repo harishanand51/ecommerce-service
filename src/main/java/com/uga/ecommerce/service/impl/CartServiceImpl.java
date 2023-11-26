@@ -67,7 +67,9 @@ public class CartServiceImpl implements CartService {
 				productCart.setProduct(product);
 				productCart.setQuantity(quantity); */
 				
-				ProductCartKey productCartKey = new ProductCartKey(cart, product);
+				ProductCartKey productCartKey = new ProductCartKey();
+				productCartKey.setCart(cart);
+				productCartKey.setProduct(product);
 		        ProductCart productCart = new ProductCart();
 		        productCart.setId(productCartKey);
 		        productCart.setQuantity(quantity);
@@ -86,14 +88,16 @@ public class CartServiceImpl implements CartService {
 				
 				boolean productExistsInCart = false;
 				for (ProductCart pc : cart.getProducts()) {
-					if (pc.getId().getProduct().getId().equals(productId)) {
+					if (pc.getProduct().getId().equals(productId)) {
 						productExistsInCart = true;
 						break;
 					}
 				}
 				
 				if (!productExistsInCart) {
-					ProductCartKey productCartKey = new ProductCartKey(cart, product);
+					ProductCartKey productCartKey = new ProductCartKey();
+					productCartKey.setCart(cart);
+					productCartKey.setProduct(product);
 					ProductCart productCart = new ProductCart();
 					productCart.setId(productCartKey);
 					productCart.setQuantity(quantity);
@@ -150,7 +154,7 @@ public class CartServiceImpl implements CartService {
 		
 		ProductCart productCartToRemove = null;
 		for (ProductCart productCart : cart.getProducts()) {
-            if (productCart.getId().getProduct().getId().equals(productId)) {
+            if (productCart.getProduct().getId().equals(productId)) {
                 productCartToRemove = productCart;
                 break;
             }

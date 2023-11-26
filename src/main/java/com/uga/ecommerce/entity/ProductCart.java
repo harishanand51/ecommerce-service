@@ -22,11 +22,11 @@ public class ProductCart {
     private ProductCartKey id;
 	
 	 @ManyToOne
-	 @JoinColumn(name = "cart_id", insertable = false, updatable = false)
+	 @JoinColumn(name = "cart_id",referencedColumnName= "id", insertable = false, updatable = false)
 	 private Cart cart;
 
 	 @ManyToOne
-	 @JoinColumn(name = "product_id", insertable = false, updatable = false)
+	 @JoinColumn(name = "product_id", referencedColumnName= "id",insertable = false, updatable = false)
 	 private Product product;
 
     /*@ManyToOne
@@ -41,13 +41,13 @@ public class ProductCart {
     @JoinColumn(name = "quantity")
     private Integer quantity;
 
-	/*public Long getId() {
+	public ProductCartKey getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(ProductCartKey id) {
 		this.id = id;
-	}*/
+	}
 
 	public Cart getCart() {
 		return cart;
@@ -65,13 +65,7 @@ public class ProductCart {
 		this.product = product;
 	}
     
-    public ProductCartKey getId() {
-        return id;
-    }
-
-    public void setId(ProductCartKey id) {
-        this.id = id;
-    }
+   
 	
 
 	public Integer getQuantity() {
@@ -87,11 +81,7 @@ public class ProductCart {
 		return "ProductCart [cart=" + cart + ", product=" + product + ", quantity=" + quantity + "]";
 	}*/
 	
-	 @Override
-	    public String toString() {
-	        return "ProductCart [id=" + id + ", quantity=" + quantity + "]";
-	    }
-
+	
 	
 
 	

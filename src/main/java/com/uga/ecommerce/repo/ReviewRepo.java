@@ -9,7 +9,8 @@ import com.uga.ecommerce.entity.Review;
 
 public interface ReviewRepo extends JpaRepository<Review, Long> 
 {
-  Review findByCustomerIdAndComment(Long customerId, String comment);
+
+  Review findByComment(String comment);
   
 //  Optional<Review> findByReviewId(Long id);
 }

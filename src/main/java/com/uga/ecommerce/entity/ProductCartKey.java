@@ -13,23 +13,13 @@ public class ProductCartKey implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
-    @JoinColumn(name = "cart_id", referencedColumnName = "id")
+    @JoinColumn(name = "cart_id")
     private Cart cart;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
-    private Product product;
+    @JoinColumn(name = "product_id")
+    private Product product;   
 
-    // Constructors (default and parameterized), getters, setters, equals(), and hashCode() methods
-
-    public ProductCartKey() {
-        // Default constructor
-    }
-
-    public ProductCartKey(Cart cart, Product product) {
-        this.cart = cart;
-        this.product = product;
-    }
 
     // Getters and setters
 
@@ -48,6 +38,12 @@ public class ProductCartKey implements Serializable {
     public void setProduct(Product product) {
         this.product = product;
     }
+
+	@Override
+	public String toString() {
+		return "ProductCartKey [cart=" + cart + ", product=" + product + "]";
+	}
+    
 
     // equals() and hashCode() methods
 
