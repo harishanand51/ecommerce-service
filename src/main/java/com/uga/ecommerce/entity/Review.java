@@ -28,10 +28,10 @@ public class Review {
 	@JsonIgnore
 	private Product product;
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	/*@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name="customer_id",  nullable=false)
 	@JsonIgnore
-	private Customer customer;
+	private Customer customer;*/
 	
 	@Column(name="rating")
 	private int rating;
@@ -58,13 +58,13 @@ public class Review {
 		this.product = product;
 	}
 
-	public Customer getCustomer() {
+	/*public Customer getCustomer() {
 		return customer;
 	}
 
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
-	}
+	}*/
 
 	public int getRating() {
 		return rating;
@@ -92,7 +92,7 @@ public class Review {
 
 	@Override
 	public String toString() {
-		return "Review [Id=" + Id + ", product=" + product + ", customer=" + customer + ", rating=" + rating
+		return "Review [Id=" + Id + ", product=" + product +  ", rating=" + rating
 				+ ", comment=" + comment + ", reviewDate=" + reviewDate + "]";
 	}
 

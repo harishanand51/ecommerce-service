@@ -68,8 +68,8 @@ public class ProductCategoryController {
 		//Product product = reqProductCategory.getProduct();
 		//Category category = reqProductCategory.getCategory();
 		
-		Product product = productService.getProductById(reqProductCategory.getProduct().getId());
-		Category category = categoryService.getcategoryById(reqProductCategory.getCategory().getId());
+		Product product = productService.getProductById(reqProductCategory.getId().getProduct().getId());
+		Category category = categoryService.getcategoryById(reqProductCategory.getId().getCategory().getId());
 		
 		if(productCategoryService.isProductMappedToCategory(product, category)) {
 			return new ResponseEntity<>("Product is already mapped to Category", HttpStatus.ALREADY_REPORTED);

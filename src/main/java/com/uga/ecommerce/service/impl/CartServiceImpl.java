@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.uga.ecommerce.entity.Cart;
 import com.uga.ecommerce.entity.Product;
 import com.uga.ecommerce.entity.ProductCart;
+import com.uga.ecommerce.entity.ProductCartKey;
 import com.uga.ecommerce.repo.CartRepo;
 import com.uga.ecommerce.repo.ProductCartRepo;
 import com.uga.ecommerce.repo.ProductRepo;
@@ -61,10 +62,15 @@ public class CartServiceImpl implements CartService {
 			// .anyMatch(pc -> pc.getProduct().getId().equals(productId));
 			if(cart.getProducts()==null){
 				
-				ProductCart productCart = new ProductCart();
+				/*ProductCart productCart = new ProductCart();
 				productCart.setCart(cart);
 				productCart.setProduct(product);
-				productCart.setQuantity(quantity);
+				productCart.setQuantity(quantity); */
+				
+				ProductCartKey productCartKey = new ProductCartKey(cart, product);
+		        ProductCart productCart = new ProductCart();
+		        productCart.setId(productCartKey);
+		        productCart.setQuantity(quantity);
 
 				productCart = productCartRepo.save(productCart);
 
@@ -80,16 +86,16 @@ public class CartServiceImpl implements CartService {
 				
 				boolean productExistsInCart = false;
 				for (ProductCart pc : cart.getProducts()) {
-					if (pc.getProduct().getId().equals(productId)) {
+					if (pc.getId().getProduct().getId().equals(productId)) {
 						productExistsInCart = true;
 						break;
 					}
 				}
 				
 				if (!productExistsInCart) {
+					ProductCartKey productCartKey = new ProductCartKey(cart, product);
 					ProductCart productCart = new ProductCart();
-					productCart.setCart(cart);
-					productCart.setProduct(product);
+					productCart.setId(productCartKey);
 					productCart.setQuantity(quantity);
 					
 					productCart = productCartRepo.save(productCart);
@@ -144,7 +150,7 @@ public class CartServiceImpl implements CartService {
 		
 		ProductCart productCartToRemove = null;
 		for (ProductCart productCart : cart.getProducts()) {
-            if (productCart.getProduct().getId().equals(productId)) {
+            if (productCart.getId().getProduct().getId().equals(productId)) {
                 productCartToRemove = productCart;
                 break;
             }

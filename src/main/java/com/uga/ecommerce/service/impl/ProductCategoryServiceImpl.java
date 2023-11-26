@@ -45,8 +45,12 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
 		
 		List<ProductCategory> productCategories = productCategoryRepo.findByCategory(category);
 		
-		return productCategories.stream()
+		/*return productCategories.stream()
                 .map(ProductCategory::getProduct)
+                .collect(Collectors.toList());*/
+		
+		return productCategories.stream()
+                .map(productCategory -> productCategory.getId().getProduct())
                 .collect(Collectors.toList());
 		
 	}

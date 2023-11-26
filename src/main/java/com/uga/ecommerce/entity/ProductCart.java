@@ -1,5 +1,7 @@
 package com.uga.ecommerce.entity;
 
+import javax.persistence.Embedded;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,28 +14,40 @@ import javax.persistence.Table;
 @Table(name = "product_cart")
 public class ProductCart {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    //@Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    //private Long id;
+	
+	@EmbeddedId
+    private ProductCartKey id;
+	
+	 @ManyToOne
+	 @JoinColumn(name = "cart_id", insertable = false, updatable = false)
+	 private Cart cart;
 
-    @ManyToOne
+	 @ManyToOne
+	 @JoinColumn(name = "product_id", insertable = false, updatable = false)
+	 private Product product;
+
+    /*@ManyToOne
     @JoinColumn(name = "cart_id")
     private Cart cart;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+    */
     
     @JoinColumn(name = "quantity")
     private Integer quantity;
 
-	public Long getId() {
+	/*public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
-	}
+	}*/
 
 	public Cart getCart() {
 		return cart;
@@ -50,6 +64,14 @@ public class ProductCart {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+    
+    public ProductCartKey getId() {
+        return id;
+    }
+
+    public void setId(ProductCartKey id) {
+        this.id = id;
+    }
 	
 
 	public Integer getQuantity() {
@@ -60,10 +82,15 @@ public class ProductCart {
 		this.quantity = quantity;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
-		return "ProductCart [id=" + id + ", cart=" + cart + ", product=" + product + ", quantity=" + quantity + "]";
-	}
+		return "ProductCart [cart=" + cart + ", product=" + product + ", quantity=" + quantity + "]";
+	}*/
+	
+	 @Override
+	    public String toString() {
+	        return "ProductCart [id=" + id + ", quantity=" + quantity + "]";
+	    }
 
 	
 

@@ -21,9 +21,13 @@ public class CartController {
 	@PostMapping("/addProductToCart")
 	public ResponseEntity<?> addProductToCart(@RequestBody ProductCart productCart ){
 		
-		Long cartId = productCart.getCart().getId();
-		Long productId = productCart.getProduct().getId();
-		Integer quantity = productCart.getQuantity();
+		Long cartId = productCart.getId().getCart().getId();
+        Long productId = productCart.getId().getProduct().getId();
+        Integer quantity = productCart.getQuantity();
+		
+		//Long cartId = productCart.getCart().getId();
+		//Long productId = productCart.getProduct().getId();
+		//Integer quantity = productCart.getQuantity();
 		
 		String response = cartService.addProductToCart(cartId,productId,quantity);
 		
@@ -34,13 +38,18 @@ public class CartController {
 	@PostMapping("/removeProductFromCart")
 	public ResponseEntity<?> removeProductFromCart(@RequestBody ProductCart productCart){
 		
-		Long cartId = productCart.getCart().getId();
-		Long productId = productCart.getProduct().getId();
+		Long cartId = productCart.getId().getCart().getId();
+        Long productId = productCart.getId().getProduct().getId();
+		//Long cartId = productCart.getCart().getId();
+		//Long productId = productCart.getProduct().getId();
 		String response = cartService.removeProductFromCart(cartId, productId);
 		
 		
 		return new ResponseEntity<>(response, HttpStatus.OK);
 		
 	}
+	
+	
+	
 
 }
