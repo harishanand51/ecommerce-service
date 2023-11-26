@@ -34,7 +34,7 @@ http.csrf().disable();
 		
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().exceptionHandling()
 		.authenticationEntryPoint(authEntryPoint).and()
-		.authorizeRequests((autz) -> autz.antMatchers("/login", "/register/**", "/profile","/product", "/addProduct", "/deleteProduct/**", "/editProduct","/getCategories","/getAllProductsinCategory/**", "/addProductToCategories").permitAll()
+		.authorizeRequests((autz) -> autz.antMatchers("/login", "/register/**", "/Allproducts","/profile","/product", "/addProduct", "/deleteProduct/**", "/editProduct","/getCategories","/getAllProductsinCategory/**", "/addProductToCategories").permitAll()
 				.antMatchers(HttpMethod.OPTIONS, "/**").permitAll().anyRequest().authenticated())
 		.addFilterBefore(new JwtTokenFilter(customerService, jwtTokenHelper),
 				UsernamePasswordAuthenticationFilter.class);
