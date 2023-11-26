@@ -31,7 +31,9 @@ public class CategoryController {
 		
 		List<Category> categories = categoryService.getAllCategories();
 		
-	    return new ResponseEntity<Category>(HttpStatus.OK);
+		logger.info("All categories:"+categories);
+		
+	    return new ResponseEntity<>(categories, HttpStatus.OK);
 		
 	}
 	

@@ -28,15 +28,31 @@ public class ProductController {
 	
 	Logger logger = LoggerFactory.getLogger(ProductController.class);
 	
-	@GetMapping("/product")
-	public ResponseEntity<?> getProduct(@RequestParam(required = false) String name){
+	@GetMapping("/product/{name}")
+	public ResponseEntity<?> getProduct(@PathVariable String name){
 		
 		logger.info("Inside get product"+name);
 			
-		List<Product> product = productService.getProductByName(name);
+		List<Product> products = productService.getProductByName(name);
 		
-		return new ResponseEntity<Product>(HttpStatus.OK);
+		logger.info("All prdoucts: "+products);
+		
+		return new ResponseEntity<>(products,HttpStatus.OK);
 	}
+	
+	@GetMapping("/Allproducts")
+	public ResponseEntity<?> getAllProducts(){
+		
+		logger.info("Inside getAll products");
+			
+		List<Product> products = productService.getAllProducts();
+		
+		logger.info("All prdoucts: "+products);
+		
+		return new ResponseEntity<>(products,HttpStatus.OK);
+	}
+	
+	
 	
 	@PostMapping("/addProduct")
 	public ResponseEntity<?> addproduct(@RequestBody Product product, UsernamePasswordAuthenticationToken authObj){

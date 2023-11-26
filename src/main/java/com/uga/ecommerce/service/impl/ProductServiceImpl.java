@@ -26,6 +26,12 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
+	public List<Product> getAllProducts() {
+		
+		return productRepo.findAll();
+	}
+	
+	@Override
 	public Product getProductById(Long id) {
 		
 		Optional<Product> product = productRepo.findById(id);
@@ -72,6 +78,8 @@ public class ProductServiceImpl implements ProductService {
 		
 		return product;
 	}
+
+
 
 	
 	

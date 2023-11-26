@@ -38,13 +38,13 @@ public class ProductCategoryController {
 	
 	Logger logger = LoggerFactory.getLogger(ProductController.class);
 	
-	@GetMapping("/getAllProductsinCategory/{category}")
-	public ResponseEntity<?> getAllProductsinCategory(@PathVariable Category category, UsernamePasswordAuthenticationToken authObj){
+	@PostMapping("/getAllProductsinCategory")
+	public ResponseEntity<?> getAllProductsinCategory(@RequestBody Category category, UsernamePasswordAuthenticationToken authObj){
 		
-		if (!AuthUtil.authorizeAdminReuest(authObj)) {
+		/*if (!AuthUtil.authorizeAdminReuest(authObj)) {
 			logger.info("User: {} is not an Admin", authObj.getName());
 			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
-		}
+		}*/
 		
 		List<Product> products = productCategoryService.getAllProductsinCategory(category);
 		
