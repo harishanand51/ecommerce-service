@@ -71,8 +71,6 @@ export class CartComponent {
     this.quantity_old=_item;
   }
   addItem(item: any){
-    
-      this.calculate_total();
       let url="http://localhost:8082/addProductToCart";
       let req={
         "product": {
@@ -92,10 +90,13 @@ export class CartComponent {
       this.cart.cart_results=res;
     });
     this.cart.total_items++;
-    this.calculate_total();
+    setTimeout(() => {
+      this.calculate_total(); // Replace with the function you want to call
+    }, 2000);
+    
   }
   removeItem(item:any){
-    if(item.quantity>2){
+    if(item.quantity>1){
       this.cart.total_items--;
       this.calculate_total();
       let url="http://localhost:8082/addProductToCart";
@@ -116,7 +117,9 @@ export class CartComponent {
     this.http.post(url,req).subscribe((res:any)=>{
       this.cart.cart_results=res;
     });
-    this.calculate_total();
+    setTimeout(() => {
+      this.calculate_total(); // Replace with the function you want to call
+    }, 2000);
   }
     else{
       let url="http://localhost:8082/removeProductFromCart";
@@ -134,9 +137,14 @@ export class CartComponent {
         }
     }
     this.http.post(url,req).subscribe((res:any)=>{
-      this.cart.cart_results=res;
-      this.calculate_total();
-    });
+      if(res==="Product removed from the cart successfully"){
+        
+    }
+  });
+    setTimeout(() => {
+      this.calculate_total(); // Replace with the function you want to call
+    }, 2000);
+    
     
     }
 

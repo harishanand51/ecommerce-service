@@ -119,7 +119,7 @@ public class CartServiceImpl implements CartService {
 					}
 				}
 				
-				if (!productExistsInCart) {
+				//if (!productExistsInCart) {
 					ProductCartKey productCartKey = new ProductCartKey();
 					productCartKey.setCart(cart);
 					productCartKey.setProduct(product);
@@ -133,10 +133,10 @@ public class CartServiceImpl implements CartService {
 					cart.setCartTotal(cart.getCartTotal() + (quantity * product.getPrice())); 
 					
 					cartRepo.save(cart);
-				} else {
+			//	} //else {
 
-					return "Product already present in the cart";
-				}
+					//return "Product already present in the cart";
+				//}
 				
 			}
 			
