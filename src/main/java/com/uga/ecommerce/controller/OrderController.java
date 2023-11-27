@@ -82,7 +82,9 @@ public class OrderController {
         
         Order order = new Order();
         
-        order.setTotalAmount((float) (amount * 0.08));
+        amount = (float) (amount + (amount * 0.08)); 
+        
+        order.setTotalAmount(amount);
         
         if(orderRepo.existsByCartId(reqCartId)) {
         	
@@ -103,7 +105,7 @@ public class OrderController {
         
 //        cartRepo.deleteCartById(reqCartId);
         
-        cartRepo.deleteById(reqCartId);
+//        cartRepo.deleteById(reqCartId);
 //        
 //        
 //		// Assuming you have a method to get cart details from the cart table
