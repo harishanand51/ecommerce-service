@@ -6,4 +6,6 @@ import com.uga.ecommerce.entity.Cart;
 
 public interface CartRepo extends JpaRepository<Cart, Long> {
 
+	void deleteCartById(Long reqCartId);
+
 }

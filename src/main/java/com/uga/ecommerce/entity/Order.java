@@ -29,6 +29,18 @@ public class Order {
 	
 	@Column(name="total_amount")
 	private float totalAmount;
+	
+	@OneToOne
+	@JoinColumn(name="cart_id")
+	private Cart cart;
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
 
 	public Long getId() {
 		return Id;
@@ -65,8 +77,10 @@ public class Order {
 	@Override
 	public String toString() {
 		return "Order [Id=" + Id + ", customer=" + customer + ", orderDate=" + orderDate + ", totalAmount="
-				+ totalAmount + "]";
+				+ totalAmount + ", cart=" + cart + "]";
 	}
+
+	
 
 	
 
