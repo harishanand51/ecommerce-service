@@ -115,6 +115,10 @@ export class HomepageComponent {
       this.homeservice.results=this.cardDataList;
   })
   }
+  logout(){
+    this.homeservice.isUser_Login=false;
+    this.router.navigateByUrl('/home');
+  }
 }
 
 
