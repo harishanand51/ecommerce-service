@@ -68,7 +68,7 @@ public class PaymentTransactionController {
 		
 		paymentTransactionService.addPaymentTransaction(paymentTransaction);
 		
-		return new ResponseEntity<>(paymentTransaction, HttpStatus.CREATED);
+		return new ResponseEntity<>("Successful", HttpStatus.OK);
 		
 	}
 

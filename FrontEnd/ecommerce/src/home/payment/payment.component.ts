@@ -37,11 +37,14 @@ export class PaymentComponent {
   },
       "paymentMethod": this.PaymentGroup.controls.new_card_type.value
   }
-  this.http.post(url,req,{ headers }).subscribe((res:any)=>{
+  this.http.post(url,req,{ headers, responseType: 'text' }).subscribe((res: string)=>{
+    if(res==="Successful"){
+      this.homeservice.total_items=0;
     let snackBarRef =this._snackBar.open("Payment Successful & Order Placed", "Navigate to Home");
     snackBarRef.onAction().subscribe(() => {
       this.router.navigateByUrl("/home");
     });
+  }
   });
     
   }

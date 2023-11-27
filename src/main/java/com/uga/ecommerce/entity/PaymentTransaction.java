@@ -77,11 +77,7 @@ public class PaymentTransaction {
 		this.paymentMethod = paymentMethod;
 	}
 
-	@Override
-	public String toString() {
-		return "PaymentTransaction [Id=" + Id + ", order=" + order + ", paymentDate=" + paymentDate + ", paymentAmount="
-				+ paymentAmount + ", paymentMethod=" + paymentMethod + "]";
-	}
+	
 
 	
 	
