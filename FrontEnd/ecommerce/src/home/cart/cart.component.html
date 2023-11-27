@@ -2,17 +2,17 @@
     <mat-icon>keyboard_arrow_left</mat-icon>
     Back to Results
 </a>
-<div *ngFor="let item of cart.results">
+<div *ngFor="let item of cart.cart_results">
     <mat-card class="book_details" *ngIf="item.quantity>0">
         <mat-card-content>
             <div class="align_image">
                
-         <img mat-card-image [src]="item.image" alt="Photo of a product" class="product_image"> 
+         <img mat-card-image [src]="item.product.image" alt="Photo of a product" class="product_image"> 
             </div>
            <div class="align_details">
-                <div class="align_bookname"><p><b>{{item.name}}</b></p></div>
-                <div><p><b>${{item.price}}</b></p></div>
-                <div><p><b>Author:</b>{{item.Author}}</p></div>
+                <div class="align_bookname"><p><b>{{item.product.productName}}</b></p></div>
+                <div><p><b>${{item.product.price}}</b></p></div>
+                
                 <button mat-icon-button (click)="removeItem(item)"><mat-icon>indeterminate_check_box</mat-icon></button>
             <mat-form-field>
               <input matInput type="number" class="quantity" [(ngModel)]="item.quantity" placeholder="{{item.quantity}}" 

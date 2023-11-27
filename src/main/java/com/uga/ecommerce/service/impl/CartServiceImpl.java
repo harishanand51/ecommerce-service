@@ -204,6 +204,13 @@ public class CartServiceImpl implements CartService {
 		return "Product removed from the cart successfully";
 	}
 
+	@Override
+	public Long countCarts() {
+		
+		return cartRepo.findMaxId();
+		
+	}
+
 
 
 	

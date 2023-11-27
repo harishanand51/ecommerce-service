@@ -9,6 +9,7 @@ export class HomeserviceService {
   disable_checkout_btn: boolean=false;
   token:any;
   cartId:any;
+  cart_results:any;
   constructor() { }
   public isUser_Login:boolean=false;
 }

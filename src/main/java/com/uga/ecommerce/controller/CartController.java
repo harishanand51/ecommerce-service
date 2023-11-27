@@ -80,8 +80,10 @@ public class CartController {
 		Integer min = 0;
         Integer max = 50;
         Integer randomCartId = (int) (Math.random() * (max - min) + min);
+        
+        Long cartnumber = cartService.countCarts();
 		
-		return new ResponseEntity<>(randomCartId, HttpStatus.OK);
+		return new ResponseEntity<>(cartnumber+1, HttpStatus.OK);
 	}
 	
 	

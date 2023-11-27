@@ -35,10 +35,7 @@ export class HomepageComponent {
     this.http.get(url1).subscribe((res:any)=>{
       this.categories=res;
     },err=>{});
-    let url2="http://localhost:8082/dummyapi"
-    this.http.get(url1).subscribe((res:any)=>{
-      this.homeservice.cartId=res;
-    },err=>{});
+    
   }
   search(){
     const searchTerm = this.searchForm.controls.searchInput.value
@@ -51,7 +48,7 @@ export class HomepageComponent {
     console.log('Search term:', searchTerm);
   }
   addtoCart(data:any){
-    let url="http://localhost:8082/addProductToCart/";
+    let url="http://localhost:8082/addProductToCart";
     let req={
       "product": {
           "id": data.id,
@@ -68,17 +65,19 @@ export class HomepageComponent {
   }
   this.http.post(url,req).subscribe((res:any)=>{
     this.call_getcart();
+    this.router.navigateByUrl("/cart");
   });
 
   }
   call_getcart(){
     let url="http://localhost:8082/getProductsInCart/"+this.homeservice.cartId;
-    this.http.get(url).subscribe((res)=>{
-      this.cardDataList=res;
-      this.homeservice.results=this.cardDataList;
+    this.http.get(url).subscribe((res:any)=>{
+      this.homeservice.cart_results=res;
+      this.homeservice.total_items=res.length;
     })
   }
   NavigateCart(){
+    this.call_getcart();
     this.router.navigateByUrl('/cart');
   }
   product_details(cardData: any, event: Event) {
