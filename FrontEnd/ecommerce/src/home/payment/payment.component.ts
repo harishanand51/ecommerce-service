@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { HomeserviceService } from '../Services/homeservice.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-payment',
@@ -9,7 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent {
-  constructor(private _snackBar: MatSnackBar,private router:Router){
+  constructor(private _snackBar: MatSnackBar,private router:Router,
+    private homeservice:HomeserviceService,private http:HttpClient){
     
   }
   type = ["debit", "credit"];
@@ -24,9 +27,22 @@ export class PaymentComponent {
     card_no: new FormControl("")
   });
   save_payment(){
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.homeservice.token
+    });
+    let url="http://localhost:8082/makeTransaction";
+    let req={
+      "order": {
+      "id": this.homeservice.orderId
+  },
+      "paymentMethod": this.PaymentGroup.controls.new_card_type.value
+  }
+  this.http.post(url,req,{ headers }).subscribe((res:any)=>{
     let snackBarRef =this._snackBar.open("Payment Successful & Order Placed", "Navigate to Home");
     snackBarRef.onAction().subscribe(() => {
       this.router.navigateByUrl("/home");
     });
+  });
+    
   }
 }

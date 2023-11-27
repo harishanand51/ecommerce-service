@@ -9,10 +9,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator'; // Add MatPaginatorModule here
-
-import { PaymentDetailsComponent } from './payment-details/payment-details.component';
-
-
 import { HomepageComponent } from './homepage/homepage.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { ReviewComponent } from './review/review.component';
@@ -23,7 +19,7 @@ import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [HomepageComponent, ProductdetailsComponent, ReviewComponent
   ,CartComponent,
-  PaymentDetailsComponent,
+  
   PaymentComponent,], // Declare HomepageComponent
   imports: [
     CommonModule,
@@ -45,7 +41,7 @@ import {MatSelectModule} from '@angular/material/select';
   
   exports:[
     CartComponent,
-    PaymentDetailsComponent,
+    PaymentComponent,
     HomepageComponent
   ]
 })

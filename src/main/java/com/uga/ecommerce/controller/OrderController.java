@@ -96,10 +96,10 @@ public class OrderController {
         
         order.setCustomer(customer);
         
-        LocalDateTime date = order.getOrderDate();
+        //LocalDateTime date = order.getOrderDate();
         
-        order.setOrderDate(date);
-        
+        //order.setOrderDate(date);
+        //order.setOrderDate(LocalDateTime.now());
         
         orderService.addOrder(order);
         
@@ -119,7 +119,7 @@ public class OrderController {
 //		
 
 		
-		return new ResponseEntity<>(order, HttpStatus.CREATED);
+		return new ResponseEntity<>(order.getId(), HttpStatus.CREATED);
 	}
 	
 	

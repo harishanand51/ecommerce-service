@@ -10,6 +10,8 @@ export class HomeserviceService {
   token:any;
   cartId:any;
   cart_results:any;
+  orderId:any;
+  
   constructor() { }
   public isUser_Login:boolean=false;
 }

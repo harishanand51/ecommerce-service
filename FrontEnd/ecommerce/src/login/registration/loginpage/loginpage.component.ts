@@ -54,8 +54,9 @@ export class LoginpageComponent implements OnInit {
       'Authorization': `Basic ${credentials}`
     })
     this.http.get(url,{headers:headers}).subscribe((res:any)=>{
-      if(res.statusCode===200){
+      if(res.token){
       this.homeservice.token=res.token;
+      this.homeservice.isUser_Login=true;
       alert('Login successful!');
       this._router.navigateByUrl("/home");
     }

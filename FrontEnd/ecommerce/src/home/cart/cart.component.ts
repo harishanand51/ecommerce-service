@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { HomeserviceService } from '../Services/homeservice.service';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cart',
@@ -12,7 +13,7 @@ export class CartComponent {
   quantity_old: any;
   total_amount: any;
   
-  constructor(public cart:HomeserviceService,private _router: Router,private http:HttpClient){
+  constructor(public cart:HomeserviceService,private _router: Router,private http:HttpClient,private _snackBar: MatSnackBar){
 
   }
   
@@ -151,8 +152,19 @@ export class CartComponent {
     
   }
   checkout(){
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.cart.token
+    });
+    if(this.cart.token!=null){
+    let url="http://localhost:8082/getOrderDetails/"+this.cart.cartId;
+    this.http.get(url, { headers }).subscribe((res:any)=>{
+      this.cart.orderId=res;
+    });
     this._router.navigateByUrl('/payment');
     this.cart.disable_checkout_btn=true;
+  }else{
+    this._snackBar.open("Please login to place an order", "Cancel");
+  }
   }
   Backtoresults(){
     this._router.navigateByUrl("/home");

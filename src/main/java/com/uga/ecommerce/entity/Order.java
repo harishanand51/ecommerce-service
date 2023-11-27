@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="`order`")
 public class Order {
@@ -21,17 +23,17 @@ public class Order {
 	private Long Id;
 	
 	@OneToOne
-	@JoinColumn(name="customer_id")
+	@JoinColumn(name="customer_id",referencedColumnName= "id")
 	private Customer customer;
 	
-	@Column(name="order_date")
+	@Column(name="order_date",  insertable=false, updatable=false)
 	private LocalDateTime orderDate;
 	
 	@Column(name="total_amount")
 	private float totalAmount;
 	
 	@OneToOne
-	@JoinColumn(name="cart_id")
+	@JoinColumn(name="cart_id",referencedColumnName= "id")
 	private Cart cart;
 
 	public Cart getCart() {
@@ -58,13 +60,13 @@ public class Order {
 		this.customer = customer;
 	}
 
-	public LocalDateTime getOrderDate() {
-		return orderDate;
-	}
-
-	public void setOrderDate(LocalDateTime orderDate) {
-		this.orderDate = orderDate;
-	}
+//	public LocalDateTime getOrderDate() {
+//		return orderDate;
+//	}
+//
+//	public void setOrderDate(LocalDateTime orderDate) {
+//		this.orderDate = orderDate;
+//	}
 
 	public float getTotalAmount() {
 		return totalAmount;
@@ -74,11 +76,7 @@ public class Order {
 		this.totalAmount = totalAmount;
 	}
 
-	@Override
-	public String toString() {
-		return "Order [Id=" + Id + ", customer=" + customer + ", orderDate=" + orderDate + ", totalAmount="
-				+ totalAmount + ", cart=" + cart + "]";
-	}
+	
 
 	
 
