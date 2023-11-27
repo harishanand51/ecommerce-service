@@ -34,7 +34,7 @@ http.csrf().disable();
 		
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().exceptionHandling()
 		.authenticationEntryPoint(authEntryPoint).and()
-		.authorizeRequests((autz) -> autz.antMatchers("/login", "/register/**", "/Allproducts","/profile","/getProductsInCart/**","/getReviews/**","/product/**", "/addProduct","/addProductToCart","/addProductToCategories", "/deleteProduct/**", "/editProduct","/getCategories","/getAllProductsinCategory/**", "/addProductToCategories","/dummyapi","/addProductToCart","/getProductsInCart/**","/removeProductFromCart").permitAll()
+		.authorizeRequests((autz) -> autz.antMatchers("/login","/signup", "/register/**", "/Allproducts","/profile","/getProductsInCart/**","/getReviews/**","/product/**", "/addProduct","/addProductToCart","/addProductToCategories", "/deleteProduct/**", "/editProduct","/getCategories","/getAllProductsinCategory/**", "/addProductToCategories","/dummyapi","/addProductToCart","/getProductsInCart/**","/removeProductFromCart").permitAll()
 				.antMatchers(HttpMethod.OPTIONS, "/**").permitAll().anyRequest().authenticated())
 		.addFilterBefore(new JwtTokenFilter(customerService, jwtTokenHelper),
 				UsernamePasswordAuthenticationFilter.class);

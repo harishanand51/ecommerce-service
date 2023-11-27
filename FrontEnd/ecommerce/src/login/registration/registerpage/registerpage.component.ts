@@ -169,18 +169,18 @@ export class RegisterpageComponent {
 
   }
   signup() {
-    let url="http://localhost:8082/signup";
+    let url="http://localhost:8082/register";
    let req={
     "firstName": this.firstFormGroup.controls.firstNameCtrl.value,
     "lastName": this.firstFormGroup.controls.lastNameCtrl.value,
     "email":this.firstFormGroup.controls.emailCtrl.value,
     "password": this.firstFormGroup.controls.passwordCtrl.value,
-    "phone":"9999",
+    "phone":this.firstFormGroup.controls.mobileCtrl.value,
     "address": "def street"
   }
-  this.http.post(url,req).subscribe((res:any)=>{
-    if(res.statusCode === 201 && res=="Customer Created"){
-      this.router.navigateByUrl("/home");
+  this.http.post(url,req,{  responseType: 'text' }).subscribe((res: string)=>{
+    if(res==="Customer Created"){
+      this.router.navigateByUrl("/login");
     }
   },err=>{
     this.firstFormGroup.reset();
