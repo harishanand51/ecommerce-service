@@ -50,8 +50,33 @@ export class HomepageComponent {
     // You can perform your search logic here, e.g., make an API request or filter data.
     console.log('Search term:', searchTerm);
   }
-  addtoCart(){
+  addtoCart(data:any){
+    let url="http://localhost:8082/addProductToCart/";
+    let req={
+      "product": {
+          "id": data.id,
+          "productName": data.productName,
+          "description": data.description,
+          "price": data.price,
+          "stockQuantity": data.stockQuantity
+      },
+      "cart": {
+          "id": this.homeservice.cartId,
+          "cart_total": ""
+      },
+      "quantity": "1"
+  }
+  this.http.post(url,req).subscribe((res:any)=>{
+    this.call_getcart();
+  });
 
+  }
+  call_getcart(){
+    let url="http://localhost:8082/getProductsInCart/"+this.homeservice.cartId;
+    this.http.get(url).subscribe((res)=>{
+      this.cardDataList=res;
+      this.homeservice.results=this.cardDataList;
+    })
   }
   NavigateCart(){
     this.router.navigateByUrl('/cart');

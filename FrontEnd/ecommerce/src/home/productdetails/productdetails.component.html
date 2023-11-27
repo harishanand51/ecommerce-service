@@ -7,7 +7,7 @@
     <div class="details">
         <div class="rating-stars" (click)="showrating()">
             <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
-              <mat-icon class="star-icon" [ngClass]="{'filled': star <= CardData.rating}">star</mat-icon>
+              <mat-icon class="star-icon" [ngClass]="{'filled': star <= CardDatarating}">star</mat-icon>
             </ng-container>
           </div>
     
@@ -22,5 +22,5 @@
   
 </div>
 <div *ngIf="showReviewSection" class="reviews-section">
-    <app-review *ngFor="let review of reviews" [review]="review"></app-review>
+    <app-review *ngFor="let review of allreviews" [review]="review"></app-review>
   </div>

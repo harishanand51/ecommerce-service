@@ -14,6 +14,8 @@ import com.uga.ecommerce.entity.ProductCartKey;
 import com.uga.ecommerce.repo.CartRepo;
 import com.uga.ecommerce.repo.ProductCartRepo;
 import com.uga.ecommerce.repo.ProductRepo;
+
+import com.uga.ecommerce.response.CartResponse;
 import com.uga.ecommerce.service.CartService;
 
 @Service
@@ -27,6 +29,29 @@ public class CartServiceImpl implements CartService {
 
 	@Autowired
 	ProductCartRepo productCartRepo;
+	
+	@SuppressWarnings("null")
+	@Override
+	public List<CartResponse> getProductsInCart(Long cartId) {
+		
+		List<ProductCart> productCarts = productCartRepo.findByCartId(cartId);
+		
+		List<Product> products = new ArrayList<>();
+		List<Integer> quantities = new ArrayList<>();
+		
+		List<CartResponse> cartResponses = new ArrayList<>();
+		
+		for(ProductCart pc: productCarts) {
+			
+			CartResponse cartResponse = new CartResponse(pc.getProduct(), pc.getQuantity());
+			
+			cartResponses.add(cartResponse);
+		}
+		
+		
+		return cartResponses;
+		
+	}
 
 	@Override
 	public String addProductToCart(Long cartId, Long productId, Integer quantity) {
@@ -178,6 +203,8 @@ public class CartServiceImpl implements CartService {
 
 		return "Product removed from the cart successfully";
 	}
+
+
 
 	
 

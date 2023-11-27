@@ -78,7 +78,7 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public List<Review> getReviewByProductId(Long productId) {
-		// TODO Auto-generated method stub
+		
 		return reviewRepo.findByProductId(productId);
 	}
 	

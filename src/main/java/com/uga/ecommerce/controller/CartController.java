@@ -1,5 +1,7 @@
 package com.uga.ecommerce.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,13 +12,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.uga.ecommerce.entity.ProductCart;
+import com.uga.ecommerce.entity.Product;
+import com.uga.ecommerce.response.CartResponse;
 import com.uga.ecommerce.service.CartService;
+
+
 
 @RestController
 public class CartController {
 	
 	@Autowired
 	CartService cartService;
+	
+	
+	@GetMapping("/getProductsInCart/{cartId}")
+	public ResponseEntity<?> getProductsInCart(@PathVariable Long cartId){
+		
+		List<CartResponse> cartResponses = cartService.getProductsInCart(cartId);
+		//CartProductResponse cartProductRespone = new CartProductResponse(products, quantity);
+		
+		return new ResponseEntity<>(cartResponses, HttpStatus.OK);
+		
+	}
 	
 	@PostMapping("/addProductToCart")
 	public ResponseEntity<?> addProductToCart(@RequestBody ProductCart productCart ){
@@ -32,7 +49,9 @@ public class CartController {
 		String response = cartService.addProductToCart(cartId,productId,quantity);
 		
 		if(response.matches("Product added to the cart successfully")) {
-			return new ResponseEntity<>(quantity, HttpStatus.OK);
+			
+			CartResponse cartResponse = new CartResponse(productCart.getProduct(), quantity);
+			return new ResponseEntity<>(cartResponse, HttpStatus.OK);
 		}
 		
 		
