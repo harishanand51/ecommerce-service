@@ -13,4 +13,6 @@ public interface OrderRepo extends JpaRepository<Order, Long> {
 
 	Order getByCustomer(Optional<Customer> reqCustomer);
 
+	boolean existsByCartId(Long reqCartId);
+
 }

@@ -4,12 +4,15 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="payment_transaction")
@@ -20,7 +23,8 @@ public class PaymentTransaction {
 	//@Column(name="payment_transaction_id")
 	private Long Id;
 	
-	@OneToOne
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="order_id")
 	private Order order;
 	
@@ -28,7 +32,7 @@ public class PaymentTransaction {
 	private LocalDateTime paymentDate;
 	
 	@Column(name="payment_amount")
-	private float paymentAmount;
+	private Float paymentAmount;
 	
 	@Column(name="payment_method")
 	private String paymentMethod;
@@ -57,11 +61,11 @@ public class PaymentTransaction {
 		this.paymentDate = paymentDate;
 	}
 
-	public float getPaymentAmount() {
+	public Float getPaymentAmount() {
 		return paymentAmount;
 	}
 
-	public void setPaymentAmount(float paymentAmount) {
+	public void setPaymentAmount(Float paymentAmount) {
 		this.paymentAmount = paymentAmount;
 	}
 

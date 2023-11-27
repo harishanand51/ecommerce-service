@@ -10,4 +10,6 @@ public interface CartRepo extends JpaRepository<Cart, Long> {
 	@Query("SELECT MAX(e.id) FROM Cart e")
     Long findMaxId();
 
+	void deleteCartById(Long reqCartId);
+
 }
