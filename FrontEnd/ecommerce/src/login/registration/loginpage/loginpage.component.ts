@@ -79,4 +79,7 @@ export class LoginpageComponent implements OnInit {
   Register(){
     this._router.navigateByUrl("/register");
   }
+  navigatehome(){
+    this._router.navigateByUrl('/home');
+  }
 }

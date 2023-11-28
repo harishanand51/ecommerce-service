@@ -40,10 +40,16 @@ export class PaymentComponent {
   this.http.post(url,req,{ headers, responseType: 'text' }).subscribe((res: string)=>{
     if(res==="Successful"){
       this.homeservice.total_items=0;
+      let url2="http://localhost:8082/dummyapi"
+    this.http.get(url2).subscribe((res:any)=>{
+      this.homeservice.cartId=res;
+    },err=>{});
     let snackBarRef =this._snackBar.open("Payment Successful & Order Placed", "Navigate to Home");
     snackBarRef.onAction().subscribe(() => {
+      
       this.router.navigateByUrl("/home");
     });
+
   }
   });
     

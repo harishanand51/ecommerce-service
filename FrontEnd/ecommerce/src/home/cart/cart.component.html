@@ -1,22 +1,43 @@
-<a (click)="Backtoresults()">
-    <mat-icon>keyboard_arrow_left</mat-icon>
-    Back to Results
+<mat-toolbar color="primary">
+  <a (click)="Backtoresults()">
+  <mat-icon>keyboard_arrow_left</mat-icon>
+  Back to Home
 </a>
-<div *ngFor="let item of cart.cart_results">
-    <mat-card class="book_details" *ngIf="item.quantity>0">
-        <mat-card-content>
-            <div class="align_image">
-               
-         <img mat-card-image src={{item.product.productImage}} alt="Photo of a product" class="product_image"> 
-            </div>
-            <div class="product-description">{{ item.Details }}</div>
-          </mat-card-content>
-        </mat-card>
-      </div>
-      <div class="total-amount aligntext-center">Total amount is {{ total_amount }}$</div>
-      <div class="proceed-to-checkout aligntext-center">
-        <button mat-raised-button color="primary" (click)="checkout()">Proceed to Checkout</button>
-      </div>
+
+
+  <div class="cart-icon">
+   
+  </div>
+</mat-toolbar>
+
+<div class="cart-container">
+  <div *ngFor="let item of cart.cart_results">
+    <mat-card class="book-details" *ngIf="item.quantity > 0">
+      <mat-card-content>
+        <img mat-card-image src="{{item.product.productImage}}" alt="Photo of a product" class="product-image">
+        <div class="align-details">
+          <div class="align-bookname">
+            <p><b>{{item.product.productName}}</b></p>
+          </div>
+          <div>
+            <p><b>${{item.product.price}}</b></p>
+          </div>
+          <button mat-icon-button (click)="removeItem(item)"><mat-icon>indeterminate_check_box</mat-icon></button>
+          <mat-form-field>
+            <input matInput type="number" class="quantity" [(ngModel)]="item.quantity" placeholder="{{item.quantity}}"
+              value="{{item.quantity}}" (change)="changeQuantity(item, $event)" (click)="setoldvalue(item.quantity)" />
+          </mat-form-field>
+          <button mat-icon-button (click)="addItem(item)"><mat-icon>add_box</mat-icon></button>
+          <div class="align-desc align-text-left">
+            <p>{{item.Details}}</p>
+          </div>
+        </div>
+      </mat-card-content>
     </mat-card>
   </div>
   
+  <div class="total-amount align-text-center">Total amount is {{ total_amount }}$</div>
+  <div class="proceed-to-checkout align-text-center">
+    <button mat-raised-button color="primary" (click)="checkout()">Proceed to Checkout</button>
+  </div>
+</div>

@@ -48,4 +48,7 @@ export class RegisterpageComponent implements OnInit {
    
     }
   }
+  navigatehome(){
+    this.router.navigateByUrl('/home');
+  }
 }

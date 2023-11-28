@@ -1,75 +1,36 @@
-.center-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .cart-card {
-    width: 70%;
-    padding: 20px;
-    background-color: #f8f8f8;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .back-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: #1976D2; /* Primary color for links, adjust as needed */
-  }
-  
-  .book-details {
-    margin-bottom: 20px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .product-info {
-    display: flex;
-  }
-  
-  .product-image {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    margin-right: 15px;
-  }
-  
-  .details-container {
-    flex: 1;
-  }
-  
-  .product-name {
-    font-size: 1.2em;
-    font-weight: bold;
-  }
-  
-  .product-price {
-    color: #388E3C; /* Green color for prices, adjust as needed */
-  }
-  
-  .quantity-controls {
-    display: flex;
-    align-items: center;
-  }
-  
-  .quantity {
-    width: 40px;
-  }
-  
-  .product-description {
-    margin-top: 10px;
-    color: #616161; /* Gray color for description, adjust as needed */
-  }
-  
-  .total-amount {
-    margin-top: 20px;
-    font-size: 1.5em;
-    font-weight: bold;
-  }
-  
-  .proceed-to-checkout {
-    margin-top: 20px;
-  }
-  
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.book-details {
+  width: 100%;
+  max-width: 400px; /* Adjust the maximum width as needed */
+  margin-bottom: 20px; /* Adjust the margin between cards as needed */
+}
+
+.product-image {
+  width: 100%;
+  height: 200px; /* Set a fixed height for the product images */
+  object-fit: cover;
+}
+
+.align-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.align-bookname,
+.align-desc {
+  margin-bottom: 10px; /* Adjust the margin between text elements as needed */
+}
+
+.quantity {
+  width: 50px; /* Adjust the width of the quantity input field as needed */
+}
+
+.total-amount,
+.proceed-to-checkout {
+  margin-top: 20px; /* Adjust the margin between the total amount and the proceed to checkout button */
+}

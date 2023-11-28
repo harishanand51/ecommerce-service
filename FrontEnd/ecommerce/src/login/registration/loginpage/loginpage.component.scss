@@ -5,11 +5,11 @@
   height: 100vh;
 }
 .login-card {
-  background-color: #cdf8f7; /* Add your desired background color here */
+  background-color: #dcf6f5; /* Add your desired background color here */
 }
 
 .login-card {
-  width: 500px;
+  width: 600px;
   height: auto; /* Adjust the width as needed */
 }
 
@@ -22,3 +22,44 @@
   color: rgb(34, 0, 128); /* Change the color to your preference */
   cursor: pointer;
 }
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  width: 400px; /* Adjust the width as needed */
+}
+
+.login-card {
+  width: 30%;
+}
+mat-toolbar {
+  width: 100%;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.align-hyperlink {
+  display: block;
+  margin-top: 15px;
+  text-align: center;
+}
+
+/* Additional styles for responsiveness */
+@media (max-width: 600px) {
+  .login-container {
+    width: 100%; /* Make the login container take up full width on smaller screens */
+  }
+}
+

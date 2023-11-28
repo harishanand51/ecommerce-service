@@ -1,84 +1,57 @@
 <div *ngIf="!showProductDetails">
-<div>
-<p>
-    <mat-toolbar color="primary">
-      
-      <span>Ecommerce App</span>
-      <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with heart icon" *ngIf="homeservice.isUser_Login">
-        <mat-icon>account_circle</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with heart icon" *ngIf="!homeservice.isUser_Login"
-      (click)="login()">
-        <mat-icon>login</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with heart icon" (click)="NavigateCart()"
-      matTooltip="Add to Cart" [matBadge]="homeservice.total_items" matBadgeColor="accent">
-        <mat-icon>add_shopping_cart</mat-icon>
-      </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="logout()">
-        <mat-icon>logout</mat-icon>
-      </button>
-    </mat-toolbar>
-  </p>
-</div>
-<div class="search-bar">
-  <form [formGroup]="searchForm">
-    <mat-form-field class="search-input" class="wide-input">
-      <input matInput formControlName="searchInput" placeholder="Enter your search term" (keyup.enter)="search()" 
-      />
-      <button mat-button matPrefix (click)="search()">
-        <mat-icon>search</mat-icon>
-      </button>
-    </mat-form-field>
-  </form>
-</div>
-
-<div class="search-bar">
-  <mat-chip-listbox [multiple]="false" aria-label="Category selection" *ngFor="let cat of categories">
-    <mat-chip-option
-    color="primary"
-    class="chip_option"
-    
-    (click)="select_category(cat)"
-  >
-      {{cat.categoryName}}</mat-chip-option>
-  </mat-chip-listbox>
-</div>
-<div>
-
-
+  <div>
+    <p>
+      <mat-toolbar color="primary">
+        <span>Ecommerce App</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button class="example-icon" *ngIf="homeservice.isUser_Login">
+          <mat-icon>account_circle</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" *ngIf="!homeservice.isUser_Login" (click)="login()">
+          <mat-icon>login</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" (click)="NavigateCart()" matTooltip="Add to Cart" [matBadge]="homeservice.total_items" matBadgeColor="accent">
+          <mat-icon>add_shopping_cart</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+        </button>
+      </mat-toolbar>
+    </p>
+  </div>
+  <div class="search-bar">
+    <form [formGroup]="searchForm">
+      <mat-form-field class="search-input" class="wide-input">
+        <input matInput formControlName="searchInput" placeholder="Enter your search term" (keyup.enter)="search()" />
+        <button mat-button matPrefix (click)="search()">
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+    </form>
+  </div>
+  <div class="search-bar">
+    <mat-chip-listbox [multiple]="false" aria-label="Category selection" *ngFor="let cat of categories">
+      <mat-chip-option color="primary" class="chip_option" (click)="select_category(cat)">
+        {{cat.categoryName}}
+      </mat-chip-option>
+    </mat-chip-listbox>
+  </div>
   <div class="card_align">
-    <div *ngFor="let cardData of getVisibleCards()" >
+    <div *ngFor="let cardData of getVisibleCards()" class="card-container">
       <mat-card class="example-card">
-        <img mat-card-image src={{cardData.productImage}} alt="Photo of a Shiba Inu">
+        <img mat-card-image src={{cardData.productImage}} alt="Photo of a Shiba Inu" class="card-image">
         <mat-card-content>
-          <p>
-            {{cardData.productName}}
-          </p>
-          <p>
-            {{cardData.description}}
-          </p>
-          <p>
-            ${{cardData.price}}
-          </p>
+          <p>{{cardData.productName}}</p>
+          <p  class="truncate-text">{{cardData.description}}</p>
+          <p>${{cardData.price}}</p>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button (click)="addtoCart(cardData)">Add to cart</button>
-          <button mat-button (click)="product_details(cardData, $event)">Details</button>
-
+          <button mat-raised-button class="mat-card-actions button" color="primary" (click)="addtoCart(cardData)">Add to cart</button>
+          <button mat-raised-button color="primary" (click)="product_details(cardData, $event)">Details</button>
         </mat-card-actions>
       </mat-card>
     </div>
   </div>
-  
-  <mat-paginator [length]="cardDataList.length"
-  [pageSize]="pageSize"
-  [pageSizeOptions]="[5, 10, 25, 100]"
-  (page)="onPageChange($event)"
-  aria-label="Select page">
-</mat-paginator>
+  <mat-paginator [length]="cardDataList.length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" (page)="onPageChange($event)" aria-label="Select page"></mat-paginator>
 </div>
-</div>
-<!-- In the HomepageComponent template -->
 <app-productdetails *ngIf="showProductDetails" [CardData]="Card_Data" (isBack)="goBack($event)"></app-productdetails>
