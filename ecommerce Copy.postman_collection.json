@@ -1,0 +1,407 @@
+{
+	"info": {
+		"_postman_id": "bec9ed97-a646-4413-8807-f59e8030eaff",
+		"name": "ecommerce Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31016146"
+	},
+	"item": [
+		{
+			"name": "signup",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"admin\",\n    \"lastName\": \"admin\",\n    \"email\":\"admiin@gmail.com\",\n    \"password\": \"admin\",\n    \"phone\":\"9999999999\",\n    \"address\": \"def street\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8082/register"
+			},
+			"response": []
+		},
+		{
+			"name": "signup",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8082/signup"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "abc",
+						"username": "abc@gmail.com"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8082/login"
+			},
+			"response": []
+		},
+		{
+			"name": "profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJlY29tbWVyY2Utc2VydmljZSIsInN1YiI6ImFiY0BnbWFpbC5jb20iLCJpYXQiOjE2OTk1MDI4MjcsImV4cCI6MTY5OTUwNjQyN30.vwh8FtaJjvT9NhZpgtQMYbJxUiKRn_rsWFYJ4z7Q9q8"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8082/profile"
+			},
+			"response": []
+		},
+		{
+			"name": "profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJlY29tbWVyY2Utc2VydmljZSIsInN1YiI6ImFiY0BnbWFpbC5jb20iLCJpYXQiOjE2OTk1MDI4MjcsImV4cCI6MTY5OTUwNjQyN30.vwh8FtaJjvT9NhZpgtQMYbJxUiKRn_rsWFYJ4z7Q9q8"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"abc\",\n    \"lastName\": \"xyz\",\n    \"email\":\"abc@gmail.com\",\n    \"password\": \"abc\",\n    \"phone\":\"9876543211\",\n    \"address\": \"xyz colony\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8082/profile"
+			},
+			"response": []
+		},
+		{
+			"name": "addProduct",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJlY29tbWVyY2Utc2VydmljZSIsInN1YiI6ImFkbWlpbkBnbWFpbC5jb20iLCJpYXQiOjE2OTk1NjA3NzEsImV4cCI6MTY5OTU2NDM3MX0.qgNYUrepc0qc0z3JRv6OQv5_k0tE_B7dwAStroX-9xc"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productName\": \"def\",\n    \"description\": \"def is used for def\",\n    \"price\": \"45\",\n    \"stockQuantity\": \"70\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8082/addProduct"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteProduct",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJlY29tbWVyY2Utc2VydmljZSIsInN1YiI6ImFiY0BnbWFpbC5jb20iLCJpYXQiOjE2OTk0MTM3NDIsImV4cCI6MTY5OTQxNzM0Mn0.WQlMmObHxyx5KCisLg37FjIfQIG9PQ4feOsKUPzlE-k"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8082/deleteProduct/2"
+			},
+			"response": []
+		},
+		{
+			"name": "editProduct",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJlY29tbWVyY2Utc2VydmljZSIsInN1YiI6ImFiY0BnbWFpbC5jb20iLCJpYXQiOjE2OTk0MTM3NDIsImV4cCI6MTY5OTQxNzM0Mn0.WQlMmObHxyx5KCisLg37FjIfQIG9PQ4feOsKUPzlE-k"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"1\",\n    \"productName\": \"abcd\",\n    \"description\": \"abcd is used for xyz\",\n    \"price\": \"155\",\n    \"stockQuantity\": \"77\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8082/editProduct"
+			},
+			"response": []
+		},
+		{
+			"name": "addProductToCategories",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJlY29tbWVyY2Utc2VydmljZSIsInN1YiI6ImFkbWlpbkBnbWFpbC5jb20iLCJpYXQiOjE2OTk5OTE2MDUsImV4cCI6MTY5OTk5NTIwNX0.wBFpNlCFTvhTIap5R4lkSC9jqR7Rf9QIqZvZb-3cqgY"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product\": {\n        \"id\": \"1\",\n        \"productName\": \"abc\",\n        \"description\": \"abc is used for abc\",\n        \"price\": \"10.00\",\n        \"stockQuantity\": \"50\"\n    },\n    \"category\": {\n        \"id\": \"2\",\n        \"categoryName\": \"Sports\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8082/addProductToCategories"
+			},
+			"response": []
+		},
+		{
+			"name": "getAllProductsinCategory",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJlY29tbWVyY2Utc2VydmljZSIsInN1YiI6ImFkbWlpbkBnbWFpbC5jb20iLCJpYXQiOjE2OTk5OTE2MDUsImV4cCI6MTY5OTk5NTIwNX0.wBFpNlCFTvhTIap5R4lkSC9jqR7Rf9QIqZvZb-3cqgY"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8082/getAllProductsinCategory/2"
+			},
+			"response": []
+		},
+		{
+			"name": "removeProductFromCategory",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJlY29tbWVyY2Utc2VydmljZSIsInN1YiI6ImFkbWlpbkBnbWFpbC5jb20iLCJpYXQiOjE2OTk5OTE2MDUsImV4cCI6MTY5OTk5NTIwNX0.wBFpNlCFTvhTIap5R4lkSC9jqR7Rf9QIqZvZb-3cqgY"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8082/removeProductFromCategory/1/2"
+			},
+			"response": []
+		},
+		{
+			"name": "addProductToCart",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"product\": {\n    \"id\": 1,\n    \"productName\": \"Apple MacBook Air M1\",\n    \"description\": \"Apple 2020 MacBook Air Laptop M1 Chip, 13 Retina Display, 8GB RAM, 256GB SSD Storage, Backlit Keyboard, FaceTime HD Camera, Touch ID. Works with iPhone/iPad; Space Gray\",\n    \"price\": 749.99,\n    \"stockQuantity\": 99\n},\n\"cart\": {\n    \"id\": 11,\n    \"cart_total\": \"\"\n},\n\"quantity\": \"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8082/addProductToCart"
+			},
+			"response": []
+		},
+		{
+			"name": "removeProdductFromCart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"product\": {\n    \"id\": 1,\n    \"productName\": \"Apple MacBook Air M1\",\n    \"description\": \"Apple 2020 MacBook Air Laptop M1 Chip, 13 Retina Display, 8GB RAM, 256GB SSD Storage, Backlit Keyboard, FaceTime HD Camera, Touch ID. Works with iPhone/iPad; Space Gray\",\n    \"price\": 749.99,\n    \"stockQuantity\": 99\n},\n\"cart\": {\n    \"id\": 11,\n    \"cart_total\": \"\"\n}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8082/removeProductFromCart"
+			},
+			"response": []
+		},
+		{
+			"name": "getProduct",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getCategories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": ""
+			},
+			"response": []
+		},
+		{
+			"name": "getAllProducts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": ""
+			},
+			"response": []
+		},
+		{
+			"name": "dummyapi",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8082/dummyapi"
+			},
+			"response": []
+		},
+		{
+			"name": "getProductInCart",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8082/getProductsInCart/33"
+			},
+			"response": []
+		},
+		{
+			"name": "getOrderDetails",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJlY29tbWVyY2Utc2VydmljZSIsInN1YiI6ImFiY0BnbWFpbC5jb20iLCJpYXQiOjE3MDEwNjc1NjUsImV4cCI6MTcwMTA3MTE2NX0.5nvSdDxvVdm8lC7gYOLo2xByjFbXfzr2OsrziSScYUk"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8082/getOrderDetails/10"
+			},
+			"response": []
+		},
+		{
+			"name": "makeTransaction",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJlY29tbWVyY2Utc2VydmljZSIsInN1YiI6ImFiY0BnbWFpbC5jb20iLCJpYXQiOjE3MDEwNjg4MTUsImV4cCI6MTcwMTA3MjQxNX0.uK64TYpEIt5ROzs5FvcpYX1O2O2dS77QLJ2vSxXL0Go"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"order\": {\n    \"id\": 7\n},\n    \"paymentMethod\": \"card\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8082/makeTransaction"
+			},
+			"response": []
+		},
+		{
+			"name": "addReview",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJlY29tbWVyY2Utc2VydmljZSIsInN1YiI6ImFkbWlAZ21haWwuY29tIiwiaWF0IjoxNzAxMTMxNzEyLCJleHAiOjE3MDExMzUzMTJ9.ghvyxf4KQ8K40Uc2xjrN-FKOEquQo6SG8_0OtFiOIsU"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product\": {\n        \"id\": 1,\n        \"productName\": \"de\",\n        \"description\": \"def is used for def\",\n        \"price\": \"45\",\n        \"stockQuantity\": \"70\"\n    },\n    \"rating\": 3,\n    \"comment\": \"08\" \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8082/addReview"
+			},
+			"response": []
+		},
+		{
+			"name": "updateReview",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJlY29tbWVyY2Utc2VydmljZSIsInN1YiI6ImFkbWlAZ21haWwuY29tIiwiaWF0IjoxNzAwOTg5NjM0LCJleHAiOjE3MDA5OTMyMzR9.HSWZ0SWNUdCawPAazJnSE3INrMkgaAsrWznjdVSzuM4"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJlY29tbWVyY2Utc2VydmljZSIsInN1YiI6ImFkbkBnbWFpbC5jb20iLCJpYXQiOjE3MDA4OTAxMTUsImV4cCI6MTcwMDg5MzcxNX0.gDexAK9EyvNoymb5hwrKexsxCCm43RxiXrk09XhO-lc"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 2,\n    \"product\": {\n        \"id\": 2,\n        \"productName\": \"deff\",\n        \"description\": \"def is used for def\",\n        \"price\": \"45\",\n        \"stockQuantity\": \"70\"\n    },\n    \"rating\": 4,\n    \"comment\": \"hjjhvh\",\n    \"date\":\"11/12/23\"\n}"
+				},
+				"url": "http://localhost:8082/updateReview"
+			},
+			"response": []
+		},
+		{
+			"name": "getReviews",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJlY29tbWVyY2Utc2VydmljZSIsInN1YiI6ImFkbWlAZ21haWwuY29tIiwiaWF0IjoxNzAxMDQzODA2LCJleHAiOjE3MDEwNDc0MDZ9.ULTKhlTtq19kra23wTdHJ8QDKiZ5gXmW04ECYoIH2sk"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJlY29tbWVyY2Utc2VydmljZSIsInN1YiI6ImFkbWlpbkBnbWFpbC5jb20iLCJpYXQiOjE2OTk5OTE2MDUsImV4cCI6MTY5OTk5NTIwNX0.wBFpNlCFTvhTIap5R4lkSC9jqR7Rf9QIqZvZb-3cqgY"
+					}
+				],
+				"url": "http://localhost:8082/getReviews/1"
+			},
+			"response": []
+		}
+	]
+}

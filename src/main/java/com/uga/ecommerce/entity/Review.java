@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -140,11 +141,16 @@ public class Review {
 //		return "Review [Id=" + Id + ", product=" + product.getId() + ", customer=" + customer.getId() + ", rating=" + rating
 //				+ ", comment=" + comment + ", reviewDate=" + reviewDate + "]";
 //	}
+//	
+	@PrePersist
+    public void prePersist() {
+        this.reviewDate = (this.reviewDate != null) ? this.reviewDate : LocalDateTime.now();
+    }
 	
 	@Override
 	public String toString() {
 		return "Review [Id=" + Id + ", product=" + product.getId() + ", rating=" + rating
-				+ ", comment=" + comment + ", reviewDate=" + reviewDate + "]";
+				+ ", comment=" + comment + "]";
 	}
 
 	public Object getYourBooleanField() {

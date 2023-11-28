@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -26,7 +27,7 @@ public class Order {
 	@JoinColumn(name="customer_id",referencedColumnName= "id")
 	private Customer customer;
 	
-	@Column(name="order_date",  insertable=false, updatable=false)
+	@Column(name="order_date")
 	private LocalDateTime orderDate;
 	
 	@Column(name="total_amount")
@@ -67,6 +68,11 @@ public class Order {
 //	public void setOrderDate(LocalDateTime orderDate) {
 //		this.orderDate = orderDate;
 //	}
+	
+	@PrePersist
+    public void prePersist() {
+        this.orderDate = (this.orderDate != null) ? this.orderDate : LocalDateTime.now();
+    }
 
 	public float getTotalAmount() {
 		return totalAmount;

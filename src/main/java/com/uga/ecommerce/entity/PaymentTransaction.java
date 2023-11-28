@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -76,7 +77,11 @@ public class PaymentTransaction {
 	public void setPaymentMethod(String paymentMethod) {
 		this.paymentMethod = paymentMethod;
 	}
-
+	
+	@PrePersist
+    public void prePersist() {
+        this.paymentDate = (this.paymentDate != null) ? this.paymentDate : LocalDateTime.now();
+    }
 	
 
 	
