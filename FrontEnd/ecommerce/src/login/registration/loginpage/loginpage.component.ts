@@ -49,8 +49,9 @@ export class LoginpageComponent implements OnInit {
     const username = this.loginFormGroup.value.UsernameCtrl;
     const password = this.loginFormGroup.value.PasswordCtrl;
     const credentials = btoa(`${username}:${password}`);
-    let url="http://localhost:8082/login";
-    const headers=new HttpHeaders({
+    let url = "http://localhost:8082/login";
+    
+    const headers = new HttpHeaders({
       'Authorization': `Basic ${credentials}`
     })
     this.http.get(url,{headers:headers}).subscribe((res:any)=>{
@@ -61,8 +62,10 @@ export class LoginpageComponent implements OnInit {
       this._router.navigateByUrl("/home");
     }
     },err=>{
+      
       alert('Invalid username or password. Please try again.');
     });
+    
     // if (username === 'your_username' && password === 'your_password') {
       
     // } else {

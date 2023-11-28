@@ -1,54 +1,82 @@
 <div class="center-container">
-    <mat-card class="Register">
+  <div class="center-content">
+    <mat-card class="signup-card" style="width: 400px; background-color: #e0f2f1;">
       <mat-card-header>
-        <mat-card-title>Register</mat-card-title>
+        <mat-card-title>Sign Up</mat-card-title>
       </mat-card-header>
-  
+      
       <mat-card-content>
-        <form [formGroup]="firstFormGroup" class="aligntext_center">
-          <div class="form-field">
-            <mat-form-field class="form-full-height">
+        <form [formGroup]="registerForm" class="aligntext_center">
+          <div class="form-field" style="width: 100%;">
+            <mat-form-field class="form-full-height" style="width: 100%;">
               <mat-label>First Name</mat-label>
               <input matInput formControlName="firstNameCtrl" required>
             </mat-form-field>
           </div>
-          <div class="form-field">
-            <mat-form-field class="form-full-height">
+          <div class="form-field" style="width: 100%;">
+            <mat-form-field class="form-full-height" style="width: 100%;">
               <mat-label>Last Name</mat-label>
               <input matInput formControlName="lastNameCtrl" required>
             </mat-form-field>
           </div>
-          <div class="form-field">
-          <mat-form-field class="form-full-height">
-            <mat-label>Email</mat-label>
-            <input matInput formControlName="emailCtrl" required>
-            
-          </mat-form-field>
-        </div>
-        <div class="form-field">
-          <mat-form-field class="form-full-height">
-            <mat-label>Password</mat-label>
-            <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="Password" formControlName="passwordCtrl" required>
-            <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
-              [attr.aria-label]="hidePassword ? 'Show password' : 'Hide password'" class="show-password-button">
-              <mat-icon class="show-password-icon">{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
-            </button>
-            
-          </mat-form-field>
-        </div>
-        <div class="form-field">
-          <mat-form-field class="form-full-height">
-            <mat-label>Mobile Number</mat-label>
-            <input matInput formControlName="mobileCtrl" required>
-          </mat-form-field>
-        </div>
-          <!-- Add other form fields as needed -->
+          <div class="form-field" style="width: 100%;">
+            <mat-form-field class="form-full-height" style="width: 100%;">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="emailCtrl" required>
+            </mat-form-field>
+          </div>
+          <div class="form-field" style="width: 100%;">
+            <mat-form-field class="form-full-height" style="width: 100%;">
+              <mat-label>Password</mat-label>
+              <input matInput [type]="hidePassword ? 'password' : 'text'" placeholder="Password" formControlName="passwordCtrl" required>
+              <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword"
+                [attr.aria-label]="hidePassword ? 'Show password' : 'Hide password'" class="show-password-button">
+                <mat-icon class="show-password-icon">{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+          <div class="form-field" style="width: 100%;">
+            <mat-form-field class="form-full-height" style="width: 100%;">
+              <mat-label>Mobile Number</mat-label>
+              <input matInput formControlName="mobileCtrl" required>
+            </mat-form-field>
+          </div>
+          <!-- Additional Address Field -->
+          <div class="form-field" style="width: 100%;">
+            <mat-form-field class="form-full-height" style="width: 100%;">
+              <mat-label>Address</mat-label>
+              <input matInput formControlName="addressCtrl" required>
+            </mat-form-field>
+          </div>
+
+          <!-- Your existing form fields can remain here -->
+
         </form>
       </mat-card-content>
-  
+
       <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="signup()">Register</button>
+        <button mat-raised-button color="primary" (click)="onRegisterSubmit()">Register</button>
       </mat-card-actions>
     </mat-card>
   </div>
-  
+</div>
+<style>
+  .form-field {
+    width: 100%;
+  }
+
+  .form-full-height {
+    width: 100%;
+  }
+
+  .center-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .center-content {
+    text-align: center;
+  }
+</style>

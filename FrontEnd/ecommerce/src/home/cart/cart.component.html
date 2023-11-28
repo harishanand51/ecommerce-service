@@ -9,26 +9,14 @@
                
          <img mat-card-image src={{item.product.productImage}} alt="Photo of a product" class="product_image"> 
             </div>
-           <div class="align_details">
-                <div class="align_bookname"><p><b>{{item.product.productName}}</b></p></div>
-                <div><p><b>${{item.product.price}}</b></p></div>
-                
-                <button mat-icon-button (click)="removeItem(item)"><mat-icon>indeterminate_check_box</mat-icon></button>
-            <mat-form-field>
-              <input matInput type="number" class="quantity" [(ngModel)]="item.quantity" placeholder="{{item.quantity}}" 
-              value="{{item.quantity}}" (change)="changeQuantity( item, $event)"
-              (click)="setoldvalue(item.quantity)"/>
-            </mat-form-field>
-            <button mat-icon-button (click)="addItem(item)"><mat-icon>add_box</mat-icon></button>
-            <div class="align_desc aligntext_left"><p>{{item.Details}}
-            </p></div>
-           </div> 
-        </mat-card-content>
+            <div class="product-description">{{ item.Details }}</div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="total-amount aligntext-center">Total amount is {{ total_amount }}$</div>
+      <div class="proceed-to-checkout aligntext-center">
+        <button mat-raised-button color="primary" (click)="checkout()">Proceed to Checkout</button>
+      </div>
     </mat-card>
-    
-</div>
-<h2 class="aligntext_center">Total amount is {{total_amount}}$</h2>
-<div  class="aligntext_center">
-    <button mat-raised-button color="primary" (click)="checkout()" >Proceed to Checkout</button>
-</div>
-    
+  </div>
+  

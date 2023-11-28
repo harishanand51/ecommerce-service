@@ -1,49 +1,59 @@
-<div>
-    <form [formGroup]="PaymentGroup">
-        <div>
+<div class="center-container">
+    <mat-card class="payment-card">
+      <mat-card-header>
+        <mat-card-title>Payment Details</mat-card-title>
+      </mat-card-header>
+  
+      <mat-card-content>
+        <form [formGroup]="PaymentGroup" class="payment-form">
+          <div class="form-field">
             <mat-form-field>
-                <mat-label>Name on the card:</mat-label>
-                <input matInput formControlName="new_card_name">
+              <mat-label>Name on the card:</mat-label>
+              <input matInput formControlName="new_card_name">
             </mat-form-field>
-        </div>
-        <div>
+          </div>
+          <div class="form-field">
             <mat-form-field>
-                <mat-label>Card Type:</mat-label>
-                <mat-select formControlName="new_card_type">
-                    <mat-option *ngFor="let typ of type" [value]="typ">
-                      {{typ}}
-                    </mat-option>
-                  </mat-select>
-                
+              <mat-label>Card Type:</mat-label>
+              <mat-select formControlName="new_card_type">
+                <mat-option *ngFor="let typ of type" [value]="typ">
+                  {{ typ }}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
-        </div>
-        <div>
-            <mat-label >Card Expiry Date:</mat-label>
-            <mat-form-field>
+          </div>
+          <div class="form-field">
+            <div class="expiry-date">
+              <mat-label>Card Expiry Date:</mat-label>
+              <mat-form-field>
                 <mat-label>Month:</mat-label>
                 <mat-select formControlName="new_card_expirydate_month">
-                    <mat-option *ngFor="let mon of month" [value]="mon" id="month">
-                      {{mon}}
-                    </mat-option>
-                  </mat-select>
-            </mat-form-field>
-            <mat-form-field>
+                  <mat-option *ngFor="let mon of month" [value]="mon" id="month">
+                    {{ mon }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-form-field>
                 <mat-label>Year:</mat-label>
                 <mat-select formControlName="new_card_expirydate_year">
-                    <mat-option *ngFor="let yr of year" [value]="yr">
-                      {{yr}}
-                    </mat-option>
-                  </mat-select>
-            </mat-form-field>
-        </div>
-        <div>
+                  <mat-option *ngFor="let yr of year" [value]="yr">
+                    {{ yr }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="form-field">
             <mat-form-field>
-                <mat-label>Card No:</mat-label>
-                <input matInput formControlName="card_no">
+              <mat-label>Card No:</mat-label>
+              <input matInput formControlName="card_no">
             </mat-form-field>
-        </div>
-        <div>
-            <button mat-raised-button color="primary" mat-raised-button color="primary" (click)="save_payment()" type="button">Save</button>
-        </div>
-    </form>
-</div>
+          </div>
+          <div class="form-field">
+            <button mat-raised-button color="primary" (click)="save_payment()" type="button">Save</button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

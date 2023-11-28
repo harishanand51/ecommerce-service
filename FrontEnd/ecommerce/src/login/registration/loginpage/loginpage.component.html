@@ -1,18 +1,28 @@
-<div class="login-container">
-    <div class="title"><h2>Login</h2></div>
-    <form [formGroup]="loginFormGroup" (ngSubmit)="login()">
-      <div class="form-group">
-        <label for="username">Username</label>
-        <!-- Use the formControlName directive to bind the input to the 'UsernameCtrl' control -->
-        <input type="text" id="username" name="username" formControlName="UsernameCtrl" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <!-- Use the formControlName directive to bind the input to the 'PasswordCtrl' control -->
-        <input type="password" id="password" name="password" formControlName="PasswordCtrl" required>
-      </div>
-      <button type="submit">Login</button>
-    </form>
-    <a (click)="Register()" class="align_hyperlink">Don't have an account? Register here</a>
-  </div>
-  
+<div class="center-container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="loginFormGroup" (ngSubmit)="login()" class="login-form">
+        <div class="form-group">
+          <mat-form-field>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" formControlName="UsernameCtrl" required>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" formControlName="PasswordCtrl" required>
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary">Login</button>
+      </form>
+      <a (click)="Register()" class="align-hyperlink">Don't have an account? <span class="register-link">Register here</span></a>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
