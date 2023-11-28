@@ -42,6 +42,9 @@ public class Product {
 		this.category = category;
 	}
 	*/
+	
+	@Column(name="product_image")
+	private String productImage;
 
 	public Long getId() {
 		return id;
@@ -83,23 +86,19 @@ public class Product {
 		this.stockQuantity = stockQuantity;
 	}
 
+	public String getProductImage() {
+		return productImage;
+	}
+
+	public void setProductImage(String productImage) {
+		this.productImage = productImage;
+	}
+
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", productName=" + productName + ", description=" + description + ", price="
-				+ price + ", stockQuantity=" + stockQuantity + "]";
+				+ price + ", stockQuantity=" + stockQuantity + ", productImage=" + productImage + "]";
 	}
-	
-	
-
-	/*@Override
-	public String toString() {
-		return "Product [id=" + id + ", productName=" + productName + ", description=" + description + ", price="
-				+ price + ", stockQuantity=" + stockQuantity + ", category=" + category + "]";
-	}*/
-
-	
-	
-	
 	
 
 }
