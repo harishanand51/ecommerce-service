@@ -100,7 +100,7 @@ Supriya
 Tanvi
 Charanvardhan
 
-# SAMPLE TABLE's are
+# SAMPLE TABLE is
 
 # Review Table
 ## Overview
@@ -121,36 +121,4 @@ comment: Textual comment provided by the user.
 review_date: Timestamp indicating when the review was created.
 
 
-# Order Table
-## Overview
-The order table is designed to store information about customer orders. The table includes details such as order ID, customer ID, cart ID, order date, and total amount.
-
-## Table Structure
-### Fields:
-id: Unique identifier for the order.
-customer_id: Identifier of the customer placing the order.
-cart_id: Identifier of the shopping cart associated with the order.
-order_date: Date and time when the order was placed (default is the current timestamp).
-total_amount: The total amount of the order.
-
-## Implementation Details:
-The API endpoint receives a GET request with the cart_id as a query parameter.
-The server fetches details from the cart table based on the provided cart_id.
-Using the retrieved cart details, a new entry is created in the order table.
-The response includes information about the newly created order, such as order ID, customer ID, cart ID, order date, and total amount.
-
-
-# Payment Transaction Table
-## Overview
-The payment_transaction table is designed to store information about payment transactions associated with orders. The table includes details such as transaction ID, order ID, payment date, payment amount, and payment method.
-
-POST: Add a payment detail for the order id
-
-## Table Structure
-### Fields:
-id: Unique identifier for the payment transaction.
-order_id: Identifier of the associated order.
-payment_date: Date and time when the payment was made (default is the current timestamp).
-payment_amount: The amount paid in the transaction.
-payment_method: The method used for the payment (e.g., credit card, PayPal).
 
